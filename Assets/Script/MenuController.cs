@@ -8,8 +8,15 @@ public class MenuController : MonoBehaviour
     [SerializeField] private string nomeDoLevelDoJogo;
     [SerializeField] private GameObject PainelMenuPrincipal;
     [SerializeField] private GameObject painelOpcoes;
-  
+    [SerializeField] private GameObject painelCreditos;
 
+
+    public void Start()
+    {
+        PainelMenuPrincipal.SetActive(true);
+        painelOpcoes.SetActive(false);
+        painelCreditos.SetActive(false);
+    }
     public void Jogar()
     {
         SceneManager.LoadScene(nomeDoLevelDoJogo);
@@ -19,6 +26,7 @@ public class MenuController : MonoBehaviour
     {
         PainelMenuPrincipal.SetActive(false);
         painelOpcoes.SetActive(true);
+        painelCreditos.SetActive(false);
     }
     public void OpcoesFechar()
     {
@@ -27,7 +35,9 @@ public class MenuController : MonoBehaviour
 
     public void Creditos()
     {
-
+        painelCreditos.SetActive (true);
+        painelOpcoes.SetActive (false);
+        PainelMenuPrincipal.SetActive (false);
     }
     public void Sair() 
     {
@@ -38,5 +48,6 @@ public class MenuController : MonoBehaviour
 
         PainelMenuPrincipal.SetActive(true);
         painelOpcoes.SetActive(false);
+        painelCreditos.SetActive(false);
     }
 }
