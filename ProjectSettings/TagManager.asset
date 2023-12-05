@@ -13,6 +13,7 @@ TagManager:
   - Jogador
   - CaixaLaranja
   - CaixaLeite
+  - Restarurant
   layers:
   - Default
   - TransparentFX

@@ -10,10 +10,11 @@ public class UIController : MonoBehaviour
     [SerializeField] public Image fillbar, armaBarLeite, armaBarLaranja;
     [SerializeField] private Slider slider;
     [SerializeField] private GameObject imagemMuniçãoLeite, imagemMuniçãoLaranja;
-    [SerializeField] private GameObject MenuPause;
+    [SerializeField] private GameObject MenuPause,MenuFim;
+    [SerializeField] private RestaurantControler restaurantControler;
     [SerializeField] private WeaponController ArmaLeite;
     [SerializeField] private GameManeger gameManeger;
-    [SerializeField] private TextMeshProUGUI pontos;
+    [SerializeField] private TextMeshProUGUI pontos,pontosFim;
     [SerializeField] private WeaponController ArmaLaranja;
     [SerializeField]private string scena, scena1;
 
@@ -22,6 +23,7 @@ public class UIController : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1.0f;
+
     }
 
     // Update is called once per frame
@@ -42,6 +44,16 @@ public class UIController : MonoBehaviour
                 MenuPause.SetActive(true);
             }
         
+        }
+        if(restaurantControler.RestaurantDestruido == true)
+        {
+           
+                Time.timeScale = 0f;
+                MenuFim.SetActive(true);
+                MenuPause.SetActive(false);
+            pontosFim.text = "Pontos: " + gameManeger.pontuação.ToString();
+            pontos.text = "";
+
         }
         fillbar.fillAmount = player.Hp / 100;
         if(player.armaAtual==0)
