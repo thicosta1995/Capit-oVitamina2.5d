@@ -5,11 +5,14 @@ using UnityEngine;
 public class RestaurantControler : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField]private int hpRestaurante;
+    [SerializeField]private int hpRestaurante,HpMax;
     public bool RestaurantDestruido = false;
+    [SerializeField] BarraHpFlutuante barraHpFlutuante;
     void Start()
     {
-        
+        barraHpFlutuante = GetComponentInChildren<BarraHpFlutuante>();
+        hpRestaurante = HpMax;
+        barraHpFlutuante.UpDateHealhBar(hpRestaurante, HpMax);
     }
 
     // Update is called once per frame
@@ -23,6 +26,7 @@ public class RestaurantControler : MonoBehaviour
          if(other.gameObject.CompareTag("C"))
         {
             hpRestaurante = hpRestaurante - 10;
+            barraHpFlutuante.UpDateHealhBar(hpRestaurante, HpMax);
         }
       
     }
@@ -31,6 +35,7 @@ public class RestaurantControler : MonoBehaviour
         if (other.gameObject.layer == 7)
         {
             hpRestaurante = hpRestaurante - 10;
+            barraHpFlutuante.UpDateHealhBar(hpRestaurante, HpMax);
         }
     }
     public void Morreu()
