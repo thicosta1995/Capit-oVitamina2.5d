@@ -45,7 +45,15 @@ public class UIController : MonoBehaviour
             }
         
         }
-        if(restaurantControler.RestaurantDestruido == true)
+        if(player.Hp<=0)
+        {
+
+            Time.timeScale = 0f;
+            MenuFim.SetActive(true);
+            MenuPause.SetActive(false);
+
+        }
+        if (restaurantControler.RestaurantDestruido == true)
         {
            
                 Time.timeScale = 0f;
