@@ -21,14 +21,11 @@ public class PlayerMovement : MonoBehaviour
     public float Hp;
     public WeaponController armaLaranja;
     public WeaponController armaLeite;
-    
     public bool Ispouse;
     public Text Hptx;
     public GameObject[] armas; // Um array de GameObjects representando suas diferentes armas.
     public int armaAtual = 0; // O índice da arma atual.
     ParticleSystem leite;
-   
-
     private void Awake()
     {
 
@@ -65,8 +62,6 @@ public class PlayerMovement : MonoBehaviour
             TrocarArma();
             Hp = Hp - 10;
         }
-      
-
      
     }
 
