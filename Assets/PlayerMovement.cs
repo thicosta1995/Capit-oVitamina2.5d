@@ -60,8 +60,9 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             TrocarArma();
-            Hp = Hp - 10;
+          
         }
+       
      
     }
 
