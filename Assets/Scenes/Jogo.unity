@@ -2569,7 +2569,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291086498}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -8014,9 +8014,9 @@ GameObject:
   m_Component:
   - component: {fileID: 972885941}
   m_Layer: 8
-  m_Name: FEET
+  m_Name: ' Feet  Direito'
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -8028,7 +8028,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972885940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.35, z: 0}
+  m_LocalPosition: {x: 1.18, y: -0.443, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10940,6 +10940,7 @@ Transform:
   - {fileID: 655355621}
   - {fileID: 1311867587}
   - {fileID: 972885941}
+  - {fileID: 1561145097}
   m_Father: {fileID: 1809538966}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12168,6 +12169,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1561145096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1561145097}
+  m_Layer: 8
+  m_Name: Feet Esquerdo
+  m_TagString: Untagged
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1561145097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561145096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.45, y: -0.52, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1420638235}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1568178543
 GameObject:
   m_ObjectHideFlags: 0
@@ -15080,9 +15112,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pontoA: {fileID: 162221768}
   pontoB: {fileID: 1950784550}
+  "velocidadePersigui\xE7\xE3o": 5.05
   player: {fileID: 1809538966}
   "vis\xE3o": {fileID: 707832528}
+  prepararatk: 0
   anguloDeVisao: 45
+  "P\xE9DoplayerDireito": {fileID: 972885941}
+  "P\xE9DoplayerEsquerdo": {fileID: 1561145097}
   direcaoDoAngulo: 271
   zoombie: {fileID: 707832525}
   vendoPlayer: 0
@@ -15173,7 +15209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961240754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.02, y: -6.46, z: -11.429}
+  m_LocalPosition: {x: -2.11, y: -6.46, z: -11.429}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

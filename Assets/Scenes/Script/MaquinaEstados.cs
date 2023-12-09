@@ -4,7 +4,9 @@ using UnityEngine;
 public class MaquinaEstados : MonoBehaviour
 {
     public Transform pontoA;
-    public Transform pontoB; // Enumeração para representar os diferentes estados
+    public Transform pontoB;
+    private float distaciaPontoA, distaciaPontoB;
+    // Enumeração para representar os diferentes estados
 
     public enum Estado
     {
@@ -17,10 +19,15 @@ public class MaquinaEstados : MonoBehaviour
     // Variável para armazenar o estado atual
     private Estado estadoAtual;
     private float velocidadePatrulha = 2.0f;
+    [SerializeField] float velocidadePersiguição = 3.0f;
     private Rigidbody rb;
     public Transform player;
     public Collider visão;
+
+    private float distaciandoPeEsquerdo, distaciandoPeDireito;
+    [SerializeField] private bool prepararatk;
     public float anguloDeVisao = 45.0f;
+    [SerializeField] private Transform PéDoplayerDireito, PéDoplayerEsquerdo;
   
     [SerializeField, Range(0.0f, 360.0f)] private float direcaoDoAngulo = 0.0f;
 
@@ -34,7 +41,7 @@ public class MaquinaEstados : MonoBehaviour
         // Inicializar o estado para Patrulha no início
         estadoAtual = Estado.Patrulha;
         rb = GetComponent<Rigidbody>();
-        PontoB = true;
+        PontoB = false;
         PontoA = false;
        zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
     }
@@ -56,6 +63,7 @@ public class MaquinaEstados : MonoBehaviour
 
             case Estado.Perseguicao:
                 // Lógica de perseguição aqui
+                perseguindoPlayer();
                 // Transição para Ataque se uma condição for atendida
                 if (CondicionalAtaque())
                 {
@@ -103,7 +111,12 @@ public class MaquinaEstados : MonoBehaviour
 
     private bool CondicionalAtaque()
     {
+        if(prepararatk == true)
+        {
+            return true;
+        }
         // Implemente a lógica para verificar se deve passar para o estado de ataque
+  
         return false;
     }
 
@@ -117,6 +130,48 @@ public class MaquinaEstados : MonoBehaviour
     {
         // Implemente a lógica para verificar se deve voltar para o estado de patrulha
         return false;
+    }
+    private void perseguindoPlayer()
+    {
+       
+
+        if (vendoPlayer == true)
+        {
+            distaciandoPeDireito = Vector3.Distance(transform.position, PéDoplayerDireito.position);
+            distaciandoPeEsquerdo = Vector3.Distance(transform.position,PéDoplayerEsquerdo.position);   
+
+            if(distaciandoPeDireito<distaciandoPeEsquerdo)
+            {
+               
+                    transform.Translate(velocidadePersiguição * Time.deltaTime, 0, 0);
+                zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, 90, zoombie.transform.rotation.z);
+
+                if (PéDoplayerDireito.position.x <= transform.position.x)
+                {
+                    prepararatk = true;
+                }
+
+
+            }
+            else
+            {
+                transform.Translate(-velocidadePersiguição * Time.deltaTime, 0, 0);
+                zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
+
+                if (PéDoplayerEsquerdo.position.x >= transform.position.x)
+                {
+                    prepararatk = true;
+                }
+
+
+            }
+
+
+        }
+        else
+        {
+            estadoAtual = Estado.Patrulha;
+        }
     }
     private void Patrulhar()
     {
@@ -133,7 +188,21 @@ public class MaquinaEstados : MonoBehaviour
         //{
         //    TrocarDestinoPatrulha(pontoA.position);
 
-        if(transform.position.x>= pontoB.position.x && PontoB== true)
+        distaciaPontoA = Vector3.Distance(transform.position, pontoA.transform.position);
+        distaciaPontoB = Vector3.Distance(transform.position, pontoB.transform.position);
+        if(distaciaPontoA < distaciaPontoB)
+        {
+
+            PontoA = true;
+            PontoB = false;
+            
+        }
+        else
+        {
+            PontoB = true;
+            PontoA = false;
+        }
+        if (transform.position.x>= pontoB.position.x && PontoB== true)
         {
             transform.Translate(-velocidadePatrulha * Time.deltaTime, 0, 0);
             if(transform.position.x <= pontoB.position.x)
