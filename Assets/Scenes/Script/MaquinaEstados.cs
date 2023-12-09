@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 public class MaquinaEstados : MonoBehaviour
@@ -17,10 +18,16 @@ public class MaquinaEstados : MonoBehaviour
     private Estado estadoAtual;
     private float velocidadePatrulha = 2.0f;
     private Rigidbody rb;
+    public Transform player;
+    public Collider visão;
+    public float anguloDeVisao = 45.0f;
+  
+    [SerializeField, Range(0.0f, 360.0f)] private float direcaoDoAngulo = 0.0f;
+
     [SerializeField] GameObject zoombie;
     bool PontoA;
     bool PontoB;
-
+    [SerializeField]public bool vendoPlayer = false;
 
     void Start()
     {
@@ -84,9 +91,15 @@ public class MaquinaEstados : MonoBehaviour
     // Exemplos de métodos de condição
     private bool CondicionalPerseguicao()
     {
-        // Implemente a lógica para verificar se deve passar para o estado de perseguição
-        return false;
+        if(vendoPlayer == true)
+        {
+            return true;
+        }
+        else
+          return false;
     }
+
+
 
     private bool CondicionalAtaque()
     {
@@ -143,8 +156,31 @@ public class MaquinaEstados : MonoBehaviour
             }
         }
     }
-        //}
-    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+
+        // Desenha o cone de visão no Scene View
+        Gizmos.matrix = Matrix4x4.TRS(transform.position, Quaternion.Euler(0, direcaoDoAngulo, 0), Vector3.one);
+        Gizmos.DrawFrustum(Vector3.zero, anguloDeVisao * 2, 1.0f, 0.0f, 10.0f); // Ajuste a distância do cone conforme necessário
+
+        // Desenha a esfera de detecção ao redor do inimigo
+        Gizmos.DrawWireSphere(transform.position, 10.0f); // Ajuste o raio conforme necessário
+
+
+
+    }
+    //}
+   
+    private void OnTriggerExit(Collider other)
+    {
+       
+        if (visão.CompareTag("Jogador"))
+        {
+            vendoPlayer = false; // Desativa a booleana quando o jogador sai da zona de detecção
+            // Pare a perseguição ou realize outras ações aqui
+        }
+    }
     private void TrocarDestinoPatrulha(Vector3 novoDestino)
     {
         // Muda o destino de patrulha
