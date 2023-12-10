@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MaquinaEstados : MonoBehaviour
@@ -26,6 +27,9 @@ public class MaquinaEstados : MonoBehaviour
 
     private float distaciandoPeEsquerdo, distaciandoPeDireito;
     [SerializeField] private bool prepararatk;
+    [SerializeField] private GameObject arma;
+    [SerializeField] private bool atacando;
+    [SerializeField] private float timeAtk,timeAtkInicial ,limiteTempo;
     public float anguloDeVisao = 45.0f;
     [SerializeField] private Transform PéDoplayerDireito, PéDoplayerEsquerdo;
   
@@ -44,6 +48,9 @@ public class MaquinaEstados : MonoBehaviour
         PontoB = false;
         PontoA = false;
        zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
+        atacando = false;
+        arma.SetActive(false);
+        timeAtk = 0.0f;
     }
 
     void Update()
@@ -77,6 +84,7 @@ public class MaquinaEstados : MonoBehaviour
                 break;
 
             case Estado.Ataque:
+                ataque();
                 // Lógica de ataque aqui
                 // Transição para Repouso se uma condição for atendida
                 if (CondicionalRepouso())
@@ -122,6 +130,10 @@ public class MaquinaEstados : MonoBehaviour
 
     private bool CondicionalRepouso()
     {
+        if(atacando == true)
+        {
+            return true;
+        }
         // Implemente a lógica para verificar se deve passar para o estado de repouso
         return false;
     }
@@ -224,6 +236,22 @@ public class MaquinaEstados : MonoBehaviour
                 zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
             }
         }
+    }
+    private void ataque()
+    {
+       
+            timeAtk = timeAtk + Time.deltaTime;
+        if(timeAtk>= timeAtkInicial)
+        {
+            arma.SetActive(true);
+           
+        }
+        if(timeAtk>= limiteTempo) 
+        {
+            arma.SetActive(false);
+            atacando = true;
+        }
+        
     }
     private void OnDrawGizmos()
     {
