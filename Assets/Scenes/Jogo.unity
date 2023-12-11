@@ -3419,7 +3419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pontoA: {fileID: 396905895}
   pontoB: {fileID: 632854676}
-  "velocidadePersigui\xE7\xE3o": 5.05
+  "velocidadePersigui\xE7\xE3o": 7.08
   player: {fileID: 1809538966}
   "vis\xE3o": {fileID: 2071261545}
   prepararatk: 0
@@ -3428,10 +3428,10 @@ MonoBehaviour:
   acordado: 0
   vericarDistancia: 0
   timeAtk: 0
-  timeAtkInicial: 1
+  timeAtkInicial: 1.28
   limiteTempo: 3
   tempoDescanco: 0
-  tempoLimiteDescanco: 3.79
+  tempoLimiteDescanco: 3.01
   anguloDeVisao: 45
   "P\xE9DoplayerDireito": {fileID: 972885941}
   "P\xE9DoplayerEsquerdo": {fileID: 1561145097}
@@ -3683,7 +3683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pontoA: {fileID: 1785894156}
   pontoB: {fileID: 1439136668}
-  "velocidadePersigui\xE7\xE3o": 5.05
+  "velocidadePersigui\xE7\xE3o": 2
   player: {fileID: 1809538966}
   "vis\xE3o": {fileID: 32952347}
   prepararatk: 0
@@ -3692,10 +3692,10 @@ MonoBehaviour:
   acordado: 0
   vericarDistancia: 0
   timeAtk: 0
-  timeAtkInicial: 1
-  limiteTempo: 3
+  timeAtkInicial: 0.8
+  limiteTempo: 1.81
   tempoDescanco: 0
-  tempoLimiteDescanco: 3.79
+  tempoLimiteDescanco: 2.64
   anguloDeVisao: 45
   "P\xE9DoplayerDireito": {fileID: 972885941}
   "P\xE9DoplayerEsquerdo": {fileID: 1561145097}
@@ -3712,7 +3712,7 @@ MonoBehaviour:
   VidaBarra: {fileID: 843243163}
   morreu: 0
   gameManeger: {fileID: 559809258}
-  VidaInimigo: 0
+  VidaInimigo: 300
   ValorPontos: 100
 --- !u!54 &481066979
 Rigidbody:
@@ -7219,7 +7219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pontoA: {fileID: 1463907289}
   pontoB: {fileID: 806080082}
-  "velocidadePersigui\xE7\xE3o": 5.05
+  "velocidadePersigui\xE7\xE3o": 7.08
   player: {fileID: 1809538966}
   "vis\xE3o": {fileID: 332081822}
   prepararatk: 0
@@ -7228,10 +7228,10 @@ MonoBehaviour:
   acordado: 0
   vericarDistancia: 0
   timeAtk: 0
-  timeAtkInicial: 1
+  timeAtkInicial: 1.28
   limiteTempo: 3
   tempoDescanco: 0
-  tempoLimiteDescanco: 3.79
+  tempoLimiteDescanco: 3.01
   anguloDeVisao: 45
   "P\xE9DoplayerDireito": {fileID: 972885941}
   "P\xE9DoplayerEsquerdo": {fileID: 1561145097}
@@ -9366,15 +9366,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 294e315030a48554eafd96b04defd1c7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.9418
+      value: 0.83357775
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 294e315030a48554eafd96b04defd1c7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5382758
+      value: 0.47642252
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 294e315030a48554eafd96b04defd1c7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.66258
+      value: 0.5435094
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 294e315030a48554eafd96b04defd1c7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9386,7 +9386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 294e315030a48554eafd96b04defd1c7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7
+      value: -8.47
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 294e315030a48554eafd96b04defd1c7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10808,7 +10808,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.60170984, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -12486,7 +12486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.50692815, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13684,7 +13684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pontoA: {fileID: 1896492792}
   pontoB: {fileID: 1029178084}
-  "velocidadePersigui\xE7\xE3o": 5.05
+  "velocidadePersigui\xE7\xE3o": 2
   player: {fileID: 1809538966}
   "vis\xE3o": {fileID: 1244286324}
   prepararatk: 0
@@ -13693,10 +13693,10 @@ MonoBehaviour:
   acordado: 0
   vericarDistancia: 0
   timeAtk: 0
-  timeAtkInicial: 1
-  limiteTempo: 3
+  timeAtkInicial: 0.8
+  limiteTempo: 1.81
   tempoDescanco: 0
-  tempoLimiteDescanco: 3.79
+  tempoLimiteDescanco: 2.64
   anguloDeVisao: 45
   "P\xE9DoplayerDireito": {fileID: 972885941}
   "P\xE9DoplayerEsquerdo": {fileID: 1561145097}
@@ -13709,11 +13709,11 @@ MonoBehaviour:
   - {fileID: 1244286320}
   - {fileID: 722872063}
   slide: {fileID: 219976677}
-  maxHP: 100
+  maxHP: 500
   VidaBarra: {fileID: 219976675}
   morreu: 0
   gameManeger: {fileID: 559809258}
-  VidaInimigo: 0
+  VidaInimigo: 300
   ValorPontos: 100
 --- !u!54 &1670094982
 Rigidbody:
@@ -15389,7 +15389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.57489336, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16238,7 +16238,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.53673553, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}

@@ -55,6 +55,10 @@ public class PlayerMovement : MonoBehaviour
         {
             yVelocity = jumpSpeed * Vector3.up;
         }
+        else if(Input.GetKeyDown(KeyCode.Space) && controle.isGrounded)
+        {
+            yVelocity = jumpSpeed * Vector3.up;
+        }
         finalVelocity = -xVelocity + yVelocity;
         controle.Move(finalVelocity * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.Alpha1))
