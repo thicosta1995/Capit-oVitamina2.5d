@@ -1,6 +1,7 @@
-using System.Diagnostics;
+
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MaquinaEstados : MonoBehaviour
 {
@@ -28,33 +29,52 @@ public class MaquinaEstados : MonoBehaviour
     private float distaciandoPeEsquerdo, distaciandoPeDireito;
     [SerializeField] private bool prepararatk;
     [SerializeField] private GameObject arma;
-    [SerializeField] private bool atacando;
-    [SerializeField] private float timeAtk,timeAtkInicial ,limiteTempo;
+    [SerializeField] private bool atacando, acordado, vericarDistancia;
+    [SerializeField] private float timeAtk, timeAtkInicial, limiteTempo, tempoDescanco, tempoLimiteDescanco;
     public float anguloDeVisao = 45.0f;
     [SerializeField] private Transform PÈDoplayerDireito, PÈDoplayerEsquerdo;
-  
+
     [SerializeField, Range(0.0f, 360.0f)] private float direcaoDoAngulo = 0.0f;
 
     [SerializeField] GameObject zoombie;
-    bool PontoA;
-    bool PontoB;
-    [SerializeField]public bool vendoPlayer = false;
+    public bool PontoA;
+    public bool PontoB;
+    [SerializeField] public bool vendoPlayer = false;
+    public GameObject[] tipoInimigo;
+    [SerializeField] private Slider slide;
+    [SerializeField] private float maxHP;
+    public BarraHpFlutuante VidaBarra;
+    public bool morreu = false;
+    public GameManeger gameManeger;
+    public float VidaInimigo;
+    public int ValorPontos;
+
 
     void Start()
     {
         // Inicializar o estado para Patrulha no inÌcio
+        tipoInimigo[0].SetActive(true);
         estadoAtual = Estado.Patrulha;
         rb = GetComponent<Rigidbody>();
         PontoB = false;
         PontoA = false;
-       zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
+        zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
         atacando = false;
         arma.SetActive(false);
         timeAtk = 0.0f;
+        acordado = true;
+        vericarDistancia = true;
+        VidaInimigo = maxHP;
+        VidaBarra = GetComponentInChildren<BarraHpFlutuante>();
+        VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
+
+
     }
 
     void Update()
     {
+
+        Morte();
         // LÛgica da m·quina de estado
         switch (estadoAtual)
         {
@@ -64,8 +84,14 @@ public class MaquinaEstados : MonoBehaviour
                 // TransiÁ„o para PerseguiÁ„o se uma condiÁ„o for atendida
                 if (CondicionalPerseguicao())
                 {
+
                     estadoAtual = Estado.Perseguicao;
                 }
+                else if (CondicionalAtaque())
+                {
+                    estadoAtual = Estado.Ataque;
+                }
+
                 break;
 
             case Estado.Perseguicao:
@@ -79,6 +105,8 @@ public class MaquinaEstados : MonoBehaviour
                 // TransiÁ„o de volta para Patrulha se necess·rio
                 else if (CondicionalVoltarPatrulha())
                 {
+
+                    vericarDistancia = true;
                     estadoAtual = Estado.Patrulha;
                 }
                 break;
@@ -91,48 +119,68 @@ public class MaquinaEstados : MonoBehaviour
                 {
                     estadoAtual = Estado.Repouso;
                 }
+                else if (CondicionalVoltarPatrulha())
+                {
+
+                    vericarDistancia = true;
+                    estadoAtual = Estado.Patrulha;
+                }
                 break;
 
             case Estado.Repouso:
+                descanco();
                 // LÛgica de repouso aqui
                 // TransiÁ„o de volta para Patrulha se necess·rio
                 if (CondicionalVoltarPatrulha())
                 {
+                    vericarDistancia = true;
                     estadoAtual = Estado.Patrulha;
+                }
+                else if (CondicionalPerseguicao())
+                {
+                    estadoAtual = Estado.Perseguicao;
+                }
+                else if (CondicionalAtaque())
+                {
+                    estadoAtual = Estado.Ataque;
                 }
                 break;
         }
+        Debug.Log("valor do enum" + estadoAtual.ToString());
     }
 
     // Exemplos de mÈtodos de condiÁ„o
     private bool CondicionalPerseguicao()
     {
-        if(vendoPlayer == true)
+        if (vendoPlayer == true && acordado == true & prepararatk == false)
         {
             return true;
         }
         else
-          return false;
+            return false;
     }
 
 
 
     private bool CondicionalAtaque()
     {
-        if(prepararatk == true)
+        if (prepararatk == true && atacando == false)
         {
             return true;
         }
         // Implemente a lÛgica para verificar se deve passar para o estado de ataque
-  
+
         return false;
     }
 
     private bool CondicionalRepouso()
     {
-        if(atacando == true)
+        if (atacando == true)
         {
+            atacando = false;
+            acordado = false;
             return true;
+
         }
         // Implemente a lÛgica para verificar se deve passar para o estado de repouso
         return false;
@@ -140,22 +188,51 @@ public class MaquinaEstados : MonoBehaviour
 
     private bool CondicionalVoltarPatrulha()
     {
+        if (vendoPlayer == false && prepararatk == false && atacando == false)
+        {
+            vericarDistancia = true;
+            return true;
+
+        }
+
         // Implemente a lÛgica para verificar se deve voltar para o estado de patrulha
         return false;
     }
+    private bool CondicionalVoltarAcordar()
+    {
+        if (acordado == true && vendoPlayer != true)
+        {
+            return true;
+        }
+        else if (acordado == true && vendoPlayer == true)
+        {
+            return false;
+        }
+        return false;
+    }
+
+    private void descanco()
+    {
+        tempoDescanco = tempoDescanco + Time.deltaTime;
+        if (tempoDescanco >= tempoLimiteDescanco)
+        {
+            acordado = true;
+            tempoDescanco = 0;
+        }
+    }
     private void perseguindoPlayer()
     {
-       
+
 
         if (vendoPlayer == true)
         {
             distaciandoPeDireito = Vector3.Distance(transform.position, PÈDoplayerDireito.position);
-            distaciandoPeEsquerdo = Vector3.Distance(transform.position,PÈDoplayerEsquerdo.position);   
+            distaciandoPeEsquerdo = Vector3.Distance(transform.position, PÈDoplayerEsquerdo.position);
 
-            if(distaciandoPeDireito<distaciandoPeEsquerdo)
+            if (distaciandoPeDireito < distaciandoPeEsquerdo)
             {
-               
-                    transform.Translate(velocidadePersiguiÁ„o * Time.deltaTime, 0, 0);
+
+                transform.Translate(velocidadePersiguiÁ„o * Time.deltaTime, 0, 0);
                 zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, 90, zoombie.transform.rotation.z);
 
                 if (PÈDoplayerDireito.position.x <= transform.position.x)
@@ -180,10 +257,9 @@ public class MaquinaEstados : MonoBehaviour
 
 
         }
-        else
-        {
-            estadoAtual = Estado.Patrulha;
-        }
+
+
+
     }
     private void Patrulhar()
     {
@@ -199,59 +275,118 @@ public class MaquinaEstados : MonoBehaviour
         //else if (Vector3.Distance(transform.position, pontoB.position) < 0.1f && rb.velocity.x < 0)
         //{
         //    TrocarDestinoPatrulha(pontoA.position);
+        acordado = true;
+        if (vericarDistancia == true)
+        {
+            distaciaPontoA = Vector3.Distance(transform.position, pontoA.transform.position);
+            distaciaPontoB = Vector3.Distance(transform.position, pontoB.transform.position);
+            if (distaciaPontoA < distaciaPontoB)
+            {
 
-        distaciaPontoA = Vector3.Distance(transform.position, pontoA.transform.position);
-        distaciaPontoB = Vector3.Distance(transform.position, pontoB.transform.position);
-        if(distaciaPontoA < distaciaPontoB)
-        {
+                PontoA = true;
+                PontoB = false;
 
-            PontoA = true;
-            PontoB = false;
-            
+                Debug.Log("entando aqui");
+
+            }
+            else
+            {
+                PontoB = true;
+                PontoA = false;
+
+
+
+            }
+            vericarDistancia = false;
         }
-        else
+
+
+
+        if (transform.position.x >= pontoB.position.x && PontoB == true && PontoA == false)
         {
-            PontoB = true;
-            PontoA = false;
-        }
-        if (transform.position.x>= pontoB.position.x && PontoB== true)
-        {
+            zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
             transform.Translate(-velocidadePatrulha * Time.deltaTime, 0, 0);
-            if(transform.position.x <= pontoB.position.x)
+            if (transform.position.x <= pontoB.position.x)
             {
                 PontoB = false;
                 PontoA = true;
-                zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, 90, zoombie.transform.rotation.z);
+                Debug.Log("entando aqui1");
+
+            }
+
+        }
+        else if (transform.position.x <= pontoB.position.x && PontoB == true && PontoA == false)
+        {
+            zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, 90, zoombie.transform.rotation.z);
+            transform.Translate(velocidadePatrulha * Time.deltaTime, 0, 0);
+            if (transform.position.x >= pontoB.position.x)
+            {
+                PontoB = false;
+                PontoA = true;
+                Debug.Log("entando aqui1");
+
+
+
             }
         }
-        else if(transform.position.x <= pontoA.position.x &&PontoA == true)
+
+        if (transform.position.x <= pontoA.position.x && PontoA == true && PontoB == false)
         {
 
+            Debug.Log("entando aqui2");
+            zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, 90, zoombie.transform.rotation.z);
             transform.Translate(+velocidadePatrulha * Time.deltaTime, 0, 0);
             if (transform.position.x >= pontoA.position.x)
             {
                 PontoB = true;
                 PontoA = false;
 
-                zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
+
+            }
+        }
+        else if (transform.position.x >= pontoA.position.x && PontoA == true && PontoB == false)
+        {
+            Debug.Log("entando aqui2");
+            zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
+            transform.Translate(-velocidadePatrulha * Time.deltaTime, 0, 0);
+            if (transform.position.x >= pontoA.position.x)
+            {
+                PontoB = true;
+                PontoA = false;
+
+
             }
         }
     }
+
     private void ataque()
     {
-       
+        if (atacando == false)
+        {
             timeAtk = timeAtk + Time.deltaTime;
-        if(timeAtk>= timeAtkInicial)
-        {
-            arma.SetActive(true);
-           
+            if (timeAtk >= timeAtkInicial)
+            {
+                arma.SetActive(true);
+
+            }
+            if (timeAtk >= limiteTempo)
+            {
+                arma.SetActive(false);
+                atacando = true;
+                prepararatk = false;
+
+                timeAtk = 0;
+            }
         }
-        if(timeAtk>= limiteTempo) 
+    }
+    void Morte()
+    {
+        if (VidaInimigo <= 0)
         {
-            arma.SetActive(false);
-            atacando = true;
+            gameManeger.adicionarPontos(ValorPontos);
+
+            Destroy(gameObject);
         }
-        
     }
     private void OnDrawGizmos()
     {
@@ -268,26 +403,60 @@ public class MaquinaEstados : MonoBehaviour
 
     }
     //}
-   
-    private void OnTriggerExit(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
-       
-        if (vis„o.CompareTag("Jogador"))
+        if (tipoInimigo[0].name == "inimigoC")
         {
-            vendoPlayer = false; // Desativa a booleana quando o jogador sai da zona de detecÁ„o
-            // Pare a perseguiÁ„o ou realize outras aÁıes aqui
+            if (other.tag == "C")
+            {
+                if (VidaInimigo >= 0)
+                {
+                    VidaInimigo = VidaInimigo - 10;
+                    VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
+                }
+
+                Destroy(other.gameObject);
+            }
+        }
+
+
+
+        if (tipoInimigo[0].name == "Z.A")
+        {
+            if (other.tag == "B")
+            {
+                if (VidaInimigo >= 0)
+                {
+                    VidaInimigo = VidaInimigo - 10;
+                    VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
+                }
+
+
+                Destroy(other.gameObject);
+            }
         }
     }
-    private void TrocarDestinoPatrulha(Vector3 novoDestino)
+    private void OnParticleCollision(GameObject other)
     {
-        // Muda o destino de patrulha
-        //pontoA.position = pontoB.position;
-        //pontoB.position = novoDestino;
-      
+        if (tipoInimigo[0].name == "inimigoB")
+        {
+            if (other.gameObject.layer == 7)
+            {
+                if (VidaInimigo >= 0)
+                {
+                    VidaInimigo = VidaInimigo - 10;
+                    VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
+                }
+
+
+            }
+
+        }
     }
+}
     //private bool CondicionalPerseguicao() { return false; }
     //private bool CondicionalAtaque() { return false; }
     //private bool CondicionalRepouso() { return false; }
     //private bool CondicionalVoltarPatrulha() { return false; }
 
-}

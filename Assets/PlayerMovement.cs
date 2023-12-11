@@ -160,6 +160,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Hp = Hp - 20;
         }
+        if(other.gameObject.CompareTag("B"))
+        {
+            Hp = Hp - 20;
+        }
        
 
     }
