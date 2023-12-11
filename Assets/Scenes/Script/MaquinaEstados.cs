@@ -73,7 +73,10 @@ public class MaquinaEstados : MonoBehaviour
 
     void Update()
     {
+        
 
+        // Lança um raio da posição do inimigo em direção ao jogador
+      
         Morte();
         // Lógica da máquina de estado
         switch (estadoAtual)
@@ -160,9 +163,8 @@ public class MaquinaEstados : MonoBehaviour
             return false;
     }
 
-
-
-    private bool CondicionalAtaque()
+   
+        private bool CondicionalAtaque()
     {
         if (prepararatk == true && atacando == false)
         {

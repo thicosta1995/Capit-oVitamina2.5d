@@ -140,11 +140,11 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = false;
         }
-        if(collision.gameObject.CompareTag("C"))
+        if(collision.gameObject.CompareTag("inimigoArC"))
         {
             Hp = Hp - 20;
         }
-        if (collision.gameObject.CompareTag("B"))
+        if (collision.gameObject.CompareTag("inimigoArB"))
         {
             Hp = Hp - 20;
         }
@@ -164,8 +164,15 @@ public class PlayerMovement : MonoBehaviour
         {
             Hp = Hp - 20;
         }
-       
 
+        if (other.gameObject.CompareTag("inimigoArC"))
+        {
+            Hp = Hp - 20;
+        }
+        if (other.gameObject.CompareTag("inimigoArB"))
+        {
+            Hp = Hp - 20;
+        }
     }
     private void OnTriggerStay(Collider other)
     {
