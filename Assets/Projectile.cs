@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
     {
         // Adiciona velocidade inicial
 
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 2);
     }
 
     private void OnTriggerEnter(Collider other)

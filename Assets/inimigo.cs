@@ -183,38 +183,10 @@ public class inimigo : MonoBehaviour
         agent.isStopped = false;
     }
 
+  
     private void OnTriggerEnter(Collider other)
     {
-        if (tipoInimigo[0].name == "Z.C")
-        {
-            if (other.tag == "C")
-            {
-                if (VidaInimigo >= 0)
-                {
-                    VidaInimigo = VidaInimigo - 10;
-                    VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
-                }
-
-                Destroy(other.gameObject);
-            }
-        }
-
-
-
-        if (tipoInimigo[0].name == "Z.A")
-        {
-            if (other.tag == "B")
-            {
-                if (VidaInimigo >= 0)
-                {
-                    VidaInimigo = VidaInimigo - 10;
-                    VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
-                }
-
-
-                Destroy(other.gameObject);
-            }
-        }
+        
     }
     private void OnParticleCollision(GameObject other)
     {
