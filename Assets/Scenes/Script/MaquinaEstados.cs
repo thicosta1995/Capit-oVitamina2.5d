@@ -22,8 +22,12 @@ public class MaquinaEstados : MonoBehaviour
     private Estado estadoAtual;
     private float velocidadePatrulha = 2.0f;
     [SerializeField] float velocidadePersiguição = 3.0f;
+    [SerializeField] private bool frenezi;
+    [SerializeField] float velocidadePadrão;
+    [SerializeField] float timeFrenezi;
     private Rigidbody rb;
-    public Transform player;
+    [SerializeField]private bool atacado;
+    public bool tomouTiro;
     public Collider visão;
 
     private float distaciandoPeEsquerdo, distaciandoPeDireito;
@@ -67,14 +71,27 @@ public class MaquinaEstados : MonoBehaviour
         VidaInimigo = maxHP;
         VidaBarra = GetComponentInChildren<BarraHpFlutuante>();
         VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
-
+        velocidadePadrão = velocidadePatrulha;
 
     }
 
     void Update()
     {
-        
 
+        if (atacado == true && timeFrenezi <= 8)
+        {
+            timeFrenezi = timeFrenezi + Time.deltaTime;
+            velocidadePatrulha = velocidadePersiguição;
+            frenezi = true;
+        }
+
+        else if (frenezi == true) 
+        {
+            velocidadePatrulha = velocidadePadrão;
+            atacado = false;
+            frenezi = false;
+            timeFrenezi = 0;
+        }
         // Lança um raio da posição do inimigo em direção ao jogador
       
         Morte();
@@ -277,6 +294,9 @@ public class MaquinaEstados : MonoBehaviour
         //else if (Vector3.Distance(transform.position, pontoB.position) < 0.1f && rb.velocity.x < 0)
         //{
         //    TrocarDestinoPatrulha(pontoA.position);
+     
+       
+
         acordado = true;
         if (vericarDistancia == true)
         {
@@ -417,8 +437,9 @@ public class MaquinaEstados : MonoBehaviour
                     VidaInimigo = VidaInimigo - 10;
                     VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
                 }
-
+               
                 Destroy(other.gameObject);
+                atacado = true;
             }
         }
 
@@ -450,7 +471,7 @@ public class MaquinaEstados : MonoBehaviour
                     VidaInimigo = VidaInimigo - 10;
                     VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
                 }
-
+                atacado = true;
 
             }
 
