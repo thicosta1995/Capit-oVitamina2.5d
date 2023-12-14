@@ -3656,7 +3656,11 @@ MonoBehaviour:
   pontoA: {fileID: 396905895}
   pontoB: {fileID: 632854676}
   "velocidadePersigui\xE7\xE3o": 7.08
-  player: {fileID: 1809538966}
+  frenezi: 0
+  "velocidadePadr\xE3o": 0
+  timeFrenezi: 0
+  atacado: 0
+  tomouTiro: 0
   "vis\xE3o": {fileID: 2071261545}
   prepararatk: 0
   arma: {fileID: 213467501}
@@ -3920,7 +3924,11 @@ MonoBehaviour:
   pontoA: {fileID: 1785894156}
   pontoB: {fileID: 1439136668}
   "velocidadePersigui\xE7\xE3o": 3.47
-  player: {fileID: 1809538966}
+  frenezi: 0
+  "velocidadePadr\xE3o": 0
+  timeFrenezi: 0
+  atacado: 0
+  tomouTiro: 0
   "vis\xE3o": {fileID: 32952347}
   prepararatk: 0
   arma: {fileID: 683684666}
@@ -4344,7 +4352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpRestaurante: 0
-  HpMax: 100
+  HpMax: 400
   RestaurantDestruido: 0
   barraHpFlutuante: {fileID: 576159753}
 --- !u!1 &504576871
@@ -7456,7 +7464,11 @@ MonoBehaviour:
   pontoA: {fileID: 1463907289}
   pontoB: {fileID: 806080082}
   "velocidadePersigui\xE7\xE3o": 7.08
-  player: {fileID: 1809538966}
+  frenezi: 0
+  "velocidadePadr\xE3o": 0
+  timeFrenezi: 0
+  atacado: 0
+  tomouTiro: 0
   "vis\xE3o": {fileID: 332081822}
   prepararatk: 0
   arma: {fileID: 1535478498}
@@ -9674,15 +9686,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4604872823351332646, guid: 294e315030a48554eafd96b04defd1c7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.54922
+      value: 0.60749227
       objectReference: {fileID: 0}
     - target: {fileID: 4604872823351332646, guid: 294e315030a48554eafd96b04defd1c7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.54922
+      value: 0.45362458
       objectReference: {fileID: 0}
     - target: {fileID: 4604872823351332646, guid: 294e315030a48554eafd96b04defd1c7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.54922
+      value: 0.64763546
       objectReference: {fileID: 0}
     - target: {fileID: 4604872823351332646, guid: 294e315030a48554eafd96b04defd1c7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11110,7 +11122,7 @@ Transform:
   m_GameObject: {fileID: 1352986929}
   m_LocalRotation: {x: -0.70511377, y: -0.004000177, z: 0.0027734593, w: 0.7090775}
   m_LocalPosition: {x: -40.035694, y: -7.299021, z: -11.38}
-  m_LocalScale: {x: 0.33563215, y: 0.31796968, z: 0.27325132}
+  m_LocalScale: {x: 0.38998243, y: 0.2235613, z: 0.27325132}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -13508,7 +13520,7 @@ Transform:
   m_GameObject: {fileID: 1595053691}
   m_LocalRotation: {x: -0.49981654, y: 0.50018346, z: -0.50018346, w: 0.49981654}
   m_LocalPosition: {x: -61.6, y: -6.164275, z: -11.38}
-  m_LocalScale: {x: 0.27324307, y: 0.26802656, z: 0.3356379}
+  m_LocalScale: {x: 0.27324307, y: 0.18148613, z: 0.3356379}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -14133,7 +14145,11 @@ MonoBehaviour:
   pontoA: {fileID: 1896492792}
   pontoB: {fileID: 1029178084}
   "velocidadePersigui\xE7\xE3o": 3.47
-  player: {fileID: 1809538966}
+  frenezi: 0
+  "velocidadePadr\xE3o": 0
+  timeFrenezi: 0
+  atacado: 0
+  tomouTiro: 0
   "vis\xE3o": {fileID: 1244286324}
   prepararatk: 0
   arma: {fileID: 906347422}
