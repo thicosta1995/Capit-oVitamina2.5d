@@ -17,6 +17,7 @@ TagManager:
   - inimigo
   - inimigoArC
   - inimigoArB
+  - Buraco
   layers:
   - Default
   - TransparentFX

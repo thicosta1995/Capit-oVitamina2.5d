@@ -166,7 +166,7 @@ public class MaquinaEstados : MonoBehaviour
                 }
                 break;
         }
-        Debug.Log("valor do enum" + estadoAtual.ToString());
+     
     }
 
     // Exemplos de métodos de condição
@@ -345,7 +345,7 @@ public class MaquinaEstados : MonoBehaviour
             {
                 PontoB = false;
                 PontoA = true;
-                Debug.Log("entando aqui1");
+              
 
 
 
@@ -355,7 +355,7 @@ public class MaquinaEstados : MonoBehaviour
         if (transform.position.x <= pontoA.position.x && PontoA == true && PontoB == false)
         {
 
-            Debug.Log("entando aqui2");
+            
             zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, 90, zoombie.transform.rotation.z);
             transform.Translate(+velocidadePatrulha * Time.deltaTime, 0, 0);
             if (transform.position.x >= pontoA.position.x)
@@ -368,7 +368,7 @@ public class MaquinaEstados : MonoBehaviour
         }
         else if (transform.position.x >= pontoA.position.x && PontoA == true && PontoB == false)
         {
-            Debug.Log("entando aqui2");
+           
             zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
             transform.Translate(-velocidadePatrulha * Time.deltaTime, 0, 0);
             if (transform.position.x >= pontoA.position.x)
