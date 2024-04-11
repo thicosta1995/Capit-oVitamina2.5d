@@ -111,6 +111,7 @@ public class MaquinaEstados : MonoBehaviour
                 {
                     estadoAtual = Estado.Ataque;
                 }
+               
 
                 break;
 

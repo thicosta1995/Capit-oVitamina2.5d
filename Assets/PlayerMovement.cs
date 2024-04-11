@@ -136,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("entrou no 1");
 
             }
+            
             if (timeCollider >= 2)
             {
 

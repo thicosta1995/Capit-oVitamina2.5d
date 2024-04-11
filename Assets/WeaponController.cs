@@ -8,8 +8,10 @@ public class WeaponController : MonoBehaviour
     public List<Transform> firePoints;
     
     public Camera mainCamera;
-    [SerializeField] private Transform Player;
+    [SerializeField] public Transform Player;
     [SerializeField] private ParticleSystem leite;
+    private bool viraDoDireita;
+    private bool viraDoEsquerda;
     [SerializeField] public float municaoDeLeite;
     [SerializeField] private float municaoDeLeiteMax= 10000;
     public bool semLeite;
@@ -31,6 +33,8 @@ public class WeaponController : MonoBehaviour
 
     private void Start()
     {
+        viraDoDireita = true;
+        viraDoEsquerda = false;
         municaoDeLaraja = municaoDeLarajaMax;
         semLaranja = false;
         recarregandoAlaranja = false;
@@ -97,7 +101,36 @@ public class WeaponController : MonoBehaviour
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
-  
+        Debug.Log("para lado  "+ angle);
+        if (angle < 90 && angle > -81&& viraDoEsquerda == false)
+        {
+
+            Player.rotation = Quaternion.Euler(0f, 90, 0);
+            viraDoEsquerda = true;
+            viraDoDireita = false;
+        }
+        if (angle < -90 && angle < -82 && viraDoDireita == false)
+        {
+            Player.rotation = Quaternion.Euler(0f, -90, 0);
+            viraDoDireita = true;
+            viraDoEsquerda = false;
+        }
+        //if (angle > -70 && angle < 89 )
+        //{
+        //    Player.rotation = Quaternion.Euler(0f, 90, 0);
+        //    viraDoEsquerda = true;
+        //    viraDoDireita = false;
+        //}
+
+        //  if (angle > -89 && angle < 91 )
+        //{
+        //    Player.rotation = Quaternion.Euler(0f, -90, 0);
+        //    viraDoDireita = true;
+        //    viraDoEsquerda = false;
+        //}
+
+
+
     }
 
     //void SetWeaponDirectionUp(Vector3 direction)
