@@ -2,7 +2,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Animations;
 public class MaquinaEstados : MonoBehaviour
 {
     public Transform pontoA;
@@ -21,6 +21,9 @@ public class MaquinaEstados : MonoBehaviour
     // Variável para armazenar o estado atual
     private Estado estadoAtual;
     private float velocidadePatrulha = 2.0f;
+
+    [SerializeField] private Animator animator;
+    [SerializeField] private Animation animationAtk,animationIdle,animationWalk;
     [SerializeField] float velocidadePersiguição = 3.0f;
     [SerializeField] private bool frenezi;
     [SerializeField] float velocidadePadrão;
@@ -58,6 +61,9 @@ public class MaquinaEstados : MonoBehaviour
     {
         // Inicializar o estado para Patrulha no início
         tipoInimigo[0].SetActive(true);
+
+        animator.SetBool("Espera", true);
+        animator.SetBool("Ataque", false);
         estadoAtual = Estado.Patrulha;
         rb = GetComponent<Rigidbody>();
         PontoB = false;
@@ -72,6 +78,7 @@ public class MaquinaEstados : MonoBehaviour
         VidaBarra = GetComponentInChildren<BarraHpFlutuante>();
         VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
         velocidadePadrão = velocidadePatrulha;
+     
 
     }
 
@@ -380,6 +387,8 @@ public class MaquinaEstados : MonoBehaviour
 
             }
         }
+        animator.SetBool("Espera", false);
+        animator.SetBool("Ataque", false);
     }
 
     private void ataque()
@@ -400,6 +409,8 @@ public class MaquinaEstados : MonoBehaviour
 
                 timeAtk = 0;
             }
+            animator.SetBool("Espera", false);
+            animator.SetBool("Ataque", true);
         }
     }
     void Morte()

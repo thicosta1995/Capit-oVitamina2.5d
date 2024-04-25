@@ -2740,6 +2740,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a9e23aed4397a3042957d7a8c4908167, type: 3}
   m_PrefabInstance: {fileID: 1399092210}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &332081825 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: a9e23aed4397a3042957d7a8c4908167, type: 3}
+  m_PrefabInstance: {fileID: 1399092210}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &333986326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3655,6 +3660,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pontoA: {fileID: 396905895}
   pontoB: {fileID: 632854676}
+  animator: {fileID: 0}
+  animationAtk: {fileID: 0}
+  animationIdle: {fileID: 0}
+  animationWalk: {fileID: 0}
   "velocidadePersigui\xE7\xE3o": 7.08
   frenezi: 0
   "velocidadePadr\xE3o": 0
@@ -3923,6 +3932,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pontoA: {fileID: 1785894156}
   pontoB: {fileID: 1439136668}
+  animator: {fileID: 0}
+  animationAtk: {fileID: 0}
+  animationIdle: {fileID: 0}
+  animationWalk: {fileID: 0}
   "velocidadePersigui\xE7\xE3o": 3.47
   frenezi: 0
   "velocidadePadr\xE3o": 0
@@ -7520,6 +7533,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pontoA: {fileID: 1463907289}
   pontoB: {fileID: 806080082}
+  animator: {fileID: 332081825}
+  animationAtk: {fileID: 0}
+  animationIdle: {fileID: 0}
+  animationWalk: {fileID: 0}
   "velocidadePersigui\xE7\xE3o": 7.08
   frenezi: 0
   "velocidadePadr\xE3o": 0
@@ -10399,6 +10416,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.9094596, z: 9.250011}
   m_Center: {x: 0, y: 0.4547298, z: 1.7418222}
+--- !u!95 &1244286325 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: a9e23aed4397a3042957d7a8c4908167, type: 3}
+  m_PrefabInstance: {fileID: 1822911076}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1268125600
 GameObject:
   m_ObjectHideFlags: 0
@@ -11949,6 +11971,7 @@ MonoBehaviour:
   xVelocity: {x: 0, y: 0, z: 0}
   yVelocity: {x: 0, y: 0, z: 0}
   finalVelocity: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
   gravity: 0
   timeCollider: 0
   maxHeight: 2
@@ -11956,15 +11979,19 @@ MonoBehaviour:
   timeToPeak: 1
   Hp: 100
   control: {fileID: 1420638237}
+  jaCaiu: 0
   armaLaranja: {fileID: 1311867588}
   colliderPlayer: {fileID: 1420638236}
   armaLeite: {fileID: 290622880}
   Ispouse: 0
+  voltarNospawm: {fileID: 0}
   Hptx: {fileID: 0}
   armas:
   - {fileID: 290622878}
   - {fileID: 1311867586}
   armaAtual: 0
+  stopDuration: 4
+  virtualCamera: {fileID: 0}
 --- !u!54 &1420638231
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14205,6 +14232,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pontoA: {fileID: 1896492792}
   pontoB: {fileID: 1029178084}
+  animator: {fileID: 1244286325}
+  animationAtk: {fileID: 0}
+  animationIdle: {fileID: 0}
+  animationWalk: {fileID: 0}
   "velocidadePersigui\xE7\xE3o": 3.47
   frenezi: 0
   "velocidadePadr\xE3o": 0

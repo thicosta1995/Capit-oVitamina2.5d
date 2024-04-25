@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using Unity.Mathematics;
 
 public class WeaponController : MonoBehaviour
 {
@@ -10,11 +10,13 @@ public class WeaponController : MonoBehaviour
     public Camera mainCamera;
     [SerializeField] public Transform Player;
     [SerializeField] private ParticleSystem leite;
-    private bool viraDoDireita;
-    private bool viraDoEsquerda;
+    [SerializeField]private bool viraDoDireita;
+    [SerializeField]private bool viraDoEsquerda;
     [SerializeField] public float municaoDeLeite;
     [SerializeField] private float municaoDeLeiteMax= 10000;
+    [SerializeField] private Transform pivot;
     public bool semLeite;
+    private Transform esquerda, direita;
     public bool recarregarLeite;
     [SerializeField] PlayerMovement player;
     public GameObject projectilePrefab;
@@ -29,10 +31,12 @@ public class WeaponController : MonoBehaviour
     private bool isFiring; // Indica se a arma está atirando
     public GameObject[] armas; // Um array de GameObjects representando suas diferentes armas.
     private int armaAtual = 0; // O índice da arma atual.
+    [SerializeField] float posiçãoArmaAtual;
 
 
     private void Start()
     {
+
         viraDoDireita = true;
         viraDoEsquerda = false;
         municaoDeLaraja = municaoDeLarajaMax;
@@ -80,7 +84,66 @@ public class WeaponController : MonoBehaviour
         }
         else if(Input.GetButtonUp("Fire1") && player.armaAtual == 0)
               leite.Stop();
-        if(recarregandoAlaranja == true)
+
+       
+        if (posiçãoArmaAtual <= 81 || posiçãoArmaAtual >= -61 && viraDoDireita == true)
+        {
+           
+            if(posiçãoArmaAtual >= 82 || posiçãoArmaAtual<=-61 )
+            {
+                viraDoEsquerda = false;
+                viraDoDireita = true;
+
+                Debug.Log("Entrou no primeiro");
+            }
+
+            else if(posiçãoArmaAtual>=-61)
+            {
+                viraDoEsquerda = true;
+                viraDoDireita = false;
+                Debug.Log("Entrou no Segundo");
+            }
+           
+            //    //Player.rotation = Quaternion.Euler(0f, 90, 0);
+            
+        }
+        if( posiçãoArmaAtual>=82 ||posiçãoArmaAtual<=-62)
+        {
+            if (posiçãoArmaAtual < -180)
+            {
+                viraDoEsquerda = false;
+                viraDoDireita = true;
+                Debug.Log("Entrou no terceiro");
+            }
+            else if(posiçãoArmaAtual >= 0 && posiçãoArmaAtual <= 81)
+            {
+                viraDoEsquerda = false;
+                viraDoDireita = true;
+                Debug.Log("Entrou no quarto");
+            }
+        }
+        //else if( posiçãoArmaAtual >=-67 && viraDoDireita == true)
+        //{
+        //    viraDoEsquerda = true;
+        //    viraDoDireita = false;
+        //}
+        //else if(posiçãoArmaAtual >= 90   && viraDoEsquerda == true)
+        //{
+
+        //    Debug.Log(" entrou na Direita");
+        //    //    //Player.rotation = Quaternion.Euler(0f, 90, 0);
+        //    viraDoEsquerda = false;
+        //    viraDoDireita = true;
+        //}
+        //else if( posiçãoArmaAtual <= -69  && viraDoEsquerda == true)
+        //{
+        //    viraDoEsquerda = false;
+        //    viraDoDireita = true;
+
+        //}
+
+
+        if (recarregandoAlaranja == true)
         {
             municaoDeLaraja = municaoDeLarajaMax;
             semLaranja = false;
@@ -94,41 +157,60 @@ public class WeaponController : MonoBehaviour
         }
 
         animaçãoLeite();
+        virarPlayer();
     }
 
- 
+
+    void virarPlayer()
+    {
+        if(viraDoDireita == true)
+        {
+
+            Player.localRotation = Quaternion.Euler(0f, -180f, 0f);
+        }
+        if(viraDoEsquerda == true)
+        {
+            Player.localRotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+    }
     void SetWeaponDirection(Vector3 direction)
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
-        Debug.Log("para lado  "+ angle);
-        if (angle < 90 && angle > -81&& viraDoEsquerda == false)
-        {
+       
 
-            Player.rotation = Quaternion.Euler(0f, 90, 0);
-            viraDoEsquerda = true;
-            viraDoDireita = false;
-        }
-        if (angle < -90 && angle < -82 && viraDoDireita == false)
-        {
-            Player.rotation = Quaternion.Euler(0f, -90, 0);
-            viraDoDireita = true;
-            viraDoEsquerda = false;
-        }
-        //if (angle > -70 && angle < 89 )
+        
+        //if (angle < 90 && angle > -81 && viraDoEsquerda == false)
         //{
-        //    Player.rotation = Quaternion.Euler(0f, 90, 0);
+        //    Player.localRotation= Quaternion.Euler(0f, 90f, 0f);
+        //    //Player.rotation = Quaternion.Euler(0f, 90, 0);
+        //    viraDoEsquerda = true;
+        //    viraDoDireita = false;
+        //}
+        //if (angle < -90 && angle < -82 && viraDoDireita == false)
+        //{
+        //    // Player.rotation = Quaternion.Euler(0f, -90, 0);
+        //    Player.localRotation = Quaternion.Euler(0f, -90f, 0f);
+        //    viraDoDireita = true;
+        //    viraDoEsquerda = false;
+        //}
+        //if (angle > -70 && angle < 89 && viraDoEsquerda == false)
+        //{
+        //    Player.localRotation = Quaternion.Euler(0f, 90f, 0f);
+        //    //Player.rotation = Quaternion.Euler(0f, 90, 0);
         //    viraDoEsquerda = true;
         //    viraDoDireita = false;
         //}
 
-        //  if (angle > -89 && angle < 91 )
+        //if (angle > -89 && angle < 91 && viraDoDireita == false)
         //{
-        //    Player.rotation = Quaternion.Euler(0f, -90, 0);
+        //    Player.localRotation = Quaternion.Euler(0f,-90f, 0f);
+        //   // Player.rotation = Quaternion.Euler(0f, -90, 0);
         //    viraDoDireita = true;
         //    viraDoEsquerda = false;
         //}
-
+        posiçãoArmaAtual = angle;
+    
 
 
     }
