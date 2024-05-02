@@ -20,21 +20,21 @@ public class holeControl : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (voltarNospawm.passou == true)
-        {
+ {
+//        if (voltarNospawm.passou == true)
+//        {
 
-            playerMovement.rb.useGravity = false;
-            player.transform.position = spawn.position;
+//            playerMovement.rb.useGravity = false;
+//            player.transform.position = spawn.position;
             
 
-            Debug.Log(" Posição do spawn  " + player.transform.position);
+//            Debug.Log(" Posição do spawn  " + player.transform.position);
 
-               // playerMovement.CameraCair.SetActive(true);
-            playerMovement.ResumeFocus();
-            voltarNospawm.passou = false;
-}
-    }
+//               // playerMovement.CameraCair.SetActive(true);
+//            playerMovement.ResumeFocus();
+//            voltarNospawm.passou = false;
+//}
+ }
     private void OnTriggerEnter(Collider other)
     {
         
