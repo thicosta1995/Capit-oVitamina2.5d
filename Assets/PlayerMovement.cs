@@ -35,7 +35,9 @@ public class PlayerMovement : MonoBehaviour
     public int armaAtual = 0; // O índice da arma atual.
     ParticleSystem leite;
     public float stopDuration = 4f; // Duração em segundos para parar o foco
+    [SerializeField] private Animator animator;
 
+    public float horizontal;
     public CinemachineVirtualCamera virtualCamera;
     private void Awake()
     {
@@ -50,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
+        animator.SetBool("leite", true);
+        animator.SetBool("LaranjaAtivo", false);
+        
         AtualizarArma();
         jaCaiu = false;
         //ResumeFocus();
@@ -66,9 +71,9 @@ public class PlayerMovement : MonoBehaviour
         {
 
 
-            float xInput = Input.GetAxis("Horizontal");
-            xVelocity = moveSpeed * xInput * Vector3.right;
-
+            float horizontal = Input.GetAxis("Horizontal");
+            xVelocity = moveSpeed * horizontal * Vector3.right;
+            animator.SetFloat("movimento", horizontal);
             yVelocity += gravity * Time.deltaTime * Vector3.down;
             if (controle.isGrounded)
             {
@@ -113,6 +118,19 @@ public class PlayerMovement : MonoBehaviour
     void AtualizarArma()
     {
         armas[armaAtual].SetActive(true);
+
+        if (armaAtual == 0)
+        {
+            animator.SetBool("leite", true);
+            animator.SetBool("LaranjaAtivo", false);
+        }
+        if (armaAtual == 1)
+        {
+
+            animator.SetBool("leite", false);
+            animator.SetBool("LaranjaAtivo", true);
+        }
+
     }
     public void ResetForces()
     {

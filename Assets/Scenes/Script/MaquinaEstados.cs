@@ -8,6 +8,8 @@ public class MaquinaEstados : MonoBehaviour
     public Transform pontoA;
     public Transform pontoB;
     private float distaciaPontoA, distaciaPontoB;
+
+    public bool vision;
     // Enumeração para representar os diferentes estados
 
     public enum Estado
@@ -26,6 +28,7 @@ public class MaquinaEstados : MonoBehaviour
     [SerializeField] private Animation animationAtk,animationIdle,animationWalk;
     [SerializeField] float velocidadePersiguição = 3.0f;
     [SerializeField] private bool frenezi;
+    [SerializeField] private Transform playerPos;
     [SerializeField] float velocidadePadrão;
     [SerializeField] float timeFrenezi;
     private Rigidbody rb;
@@ -55,7 +58,7 @@ public class MaquinaEstados : MonoBehaviour
     public GameManeger gameManeger;
     public float VidaInimigo;
     public int ValorPontos;
-
+    public Transform posPlayerVision;
 
     void Start()
     {
@@ -175,6 +178,10 @@ public class MaquinaEstados : MonoBehaviour
                 break;
         }
      
+        if(vision ==true) 
+        {
+            posPlayerVision = playerPos;
+        }
     }
 
     // Exemplos de métodos de condição

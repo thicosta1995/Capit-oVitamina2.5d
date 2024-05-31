@@ -1689,8 +1689,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Selecionar Nivel
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f0da4eb679db9ce4596b760f45f1bdb9, type: 2}
-  m_sharedMaterial: {fileID: 1270287484492294991, guid: f0da4eb679db9ce4596b760f45f1bdb9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b31221270b042984e87ecceeb5b97baf, type: 2}
+  m_sharedMaterial: {fileID: 7488955917065603015, guid: b31221270b042984e87ecceeb5b97baf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1714,10 +1714,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 85
+  m_fontSize: 57.4
   m_fontSizeBase: 85
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -2797,7 +2797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &937737793
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4195,10 +4195,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jogar Beta
+  m_text: Alpha
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f0da4eb679db9ce4596b760f45f1bdb9, type: 2}
-  m_sharedMaterial: {fileID: 1270287484492294991, guid: f0da4eb679db9ce4596b760f45f1bdb9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b31221270b042984e87ecceeb5b97baf, type: 2}
+  m_sharedMaterial: {fileID: 7488955917065603015, guid: b31221270b042984e87ecceeb5b97baf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4222,10 +4222,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 85
-  m_fontSizeBase: 85
+  m_fontSize: 72
+  m_fontSizeBase: 84.62
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -4332,8 +4332,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Voltar
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f0da4eb679db9ce4596b760f45f1bdb9, type: 2}
-  m_sharedMaterial: {fileID: 1270287484492294991, guid: f0da4eb679db9ce4596b760f45f1bdb9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b31221270b042984e87ecceeb5b97baf, type: 2}
+  m_sharedMaterial: {fileID: 7488955917065603015, guid: b31221270b042984e87ecceeb5b97baf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5588,7 +5588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1875319140
 RectTransform:
   m_ObjectHideFlags: 0

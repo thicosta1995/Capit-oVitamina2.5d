@@ -2,12 +2,15 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEngine.Animations.Rigging;
+using UnityEngine.Animations;
 
 public class WeaponController : MonoBehaviour
 {
     public List<Transform> firePoints;
     
     public Camera mainCamera;
+    [SerializeField] private Rig aimRig;
     [SerializeField] public Transform Player;
     [SerializeField] private ParticleSystem leite;
     [SerializeField]private bool viraDoDireita;
@@ -32,6 +35,10 @@ public class WeaponController : MonoBehaviour
     public GameObject[] armas; // Um array de GameObjects representando suas diferentes armas.
     private int armaAtual = 0; // O índice da arma atual.
     [SerializeField] float posiçãoArmaAtual;
+    private float aimWeight;
+  
+
+
 
 
     private void Start()
@@ -45,13 +52,17 @@ public class WeaponController : MonoBehaviour
         municaoDeLeite = municaoDeLeiteMax;
         semLeite = false;
         recarregarLeite = false;
+        aimWeight = 1.0f;
+       
     }
     private void Update()
     {
       
-        Vector3 mousePositionScreen = Input.mousePosition;
+       // Vector3 mousePositionScreen = Input.mousePosition;
+      
 
-        Ray ray = mainCamera.ScreenPointToRay(mousePositionScreen);
+
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if(municaoDeLaraja <=0)
         {
             semLaranja = true;
@@ -60,13 +71,15 @@ public class WeaponController : MonoBehaviour
         {
             semLeite = true;
         }
+        Vector3 aimPos = Vector3.zero;
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            Vector3 direction = hit.point - transform.position;
-            direction.Normalize();
-
+            Vector3 direction = hit.point - pivot.position;
+          pivot.forward = direction;
+            pivot.transform.rotation = Quaternion.LookRotation(direction);
             SetWeaponDirection(direction);
         }
+        ////aimRig.weight = Mathf.Lerp(aimRig.weight,aimWeight,Time.deltaTime*20);
 
         if (Input.GetButtonDown("Fire1") && player.armaAtual == 1 && municaoDeLaraja > 0)
         {
@@ -115,7 +128,7 @@ public class WeaponController : MonoBehaviour
                 viraDoDireita = true;
                 Debug.Log("Entrou no terceiro");
             }
-            else if(posiçãoArmaAtual >= 0 && posiçãoArmaAtual <= 81)
+            else if( posiçãoArmaAtual >= 81)
             {
                 viraDoEsquerda = false;
                 viraDoDireita = true;
@@ -166,20 +179,23 @@ public class WeaponController : MonoBehaviour
         if(viraDoDireita == true)
         {
 
-            Player.localRotation = Quaternion.Euler(0f, -180f, 0f);
+         //   Player.rotation = Quaternion.Euler(0f, 0, 0f);
         }
         if(viraDoEsquerda == true)
         {
-            Player.localRotation = Quaternion.Euler(0f, 180f, 0f);
+           // Player.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
     }
     void SetWeaponDirection(Vector3 direction)
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
-       
+        // transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        pivot.rotation = Quaternion.Euler(0f, 0f, angle-85);
+        // pivot.RotateAround(pivot.position,direction, angle-80);
+      //  pivot.RotateAroundLocal(direction, angle);
+        // pivot.eulerAngles =new Vector3(0f, 0f, angle);  
 
-        
+
         //if (angle < 90 && angle > -81 && viraDoEsquerda == false)
         //{
         //    Player.localRotation= Quaternion.Euler(0f, 90f, 0f);
