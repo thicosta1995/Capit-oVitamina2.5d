@@ -179,11 +179,11 @@ public class WeaponController : MonoBehaviour
         if(viraDoDireita == true)
         {
 
-         //   Player.rotation = Quaternion.Euler(0f, 0, 0f);
+            Player.rotation = Quaternion.Euler(0f, 0, 0f);
         }
         if(viraDoEsquerda == true)
         {
-           // Player.rotation = Quaternion.Euler(0f, 180f, 0f);
+            Player.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
     }
     void SetWeaponDirection(Vector3 direction)

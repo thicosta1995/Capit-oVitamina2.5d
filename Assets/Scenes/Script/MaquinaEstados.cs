@@ -3,6 +3,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Animations;
+using DG.Tweening;
+using System.Collections.Generic;
+
 public class MaquinaEstados : MonoBehaviour
 {
     public Transform pontoA;
@@ -17,7 +20,8 @@ public class MaquinaEstados : MonoBehaviour
         Patrulha,
         Perseguicao,
         Ataque,
-        Repouso
+        Repouso,
+        ReceberAtk
     }
 
     // Variável para armazenar o estado atual
@@ -57,9 +61,21 @@ public class MaquinaEstados : MonoBehaviour
     public bool morreu = false;
     public GameManeger gameManeger;
     public float VidaInimigo;
+  
     public int ValorPontos;
     public Transform posPlayerVision;
-
+    public bool tomouDano;
+    private float MaxTrowForce = 25;
+    public float HistoricalTime = 1f;
+    [Range(1, 100)]
+    public int HistoricalResolution = 10;
+    private Queue<Vector3> HistoricalPositions;
+    private float HistoricalPositionInterval;
+    private Rigidbody AttackProjectile;
+    private float SpherecastRadius = 0.5f;
+    private float LastAttackTime;
+    [SerializeField]
+    private float AttackDelay = 5f;
     void Start()
     {
         // Inicializar o estado para Patrulha no início
@@ -81,13 +97,40 @@ public class MaquinaEstados : MonoBehaviour
         VidaBarra = GetComponentInChildren<BarraHpFlutuante>();
         VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
         velocidadePadrão = velocidadePatrulha;
-     
+        
+        AttackProjectile.useGravity = false;
+        AttackProjectile.isKinematic = true;
+        SpherecastRadius = AttackProjectile.GetComponent<SphereCollider>().radius;
+        LastAttackTime = Random.Range(0, 5);
+        int capacity = Mathf.CeilToInt(HistoricalResolution * HistoricalTime);
+        HistoricalPositions = new Queue<Vector3>(capacity);
+        for (int i = 0; i < capacity; i++)
+        {
+            HistoricalPositions.Enqueue(playerPos.position);
+        }
+        HistoricalPositionInterval = HistoricalTime / HistoricalResolution;
 
     }
 
     void Update()
     {
-
+        //if (Time.time > LastAttackTime + AttackDelay
+        //   && Physics.SphereCast(
+        //       transform.position,
+        //       SpherecastRadius,
+        //       (playerPos.transform.position + Vector3.up - transform.position).normalized,
+        //       out RaycastHit hit,
+        //       float.MaxValue,
+        //       SightLayers)
+        //   && hit.transform == playerPos)
+        //{
+        //    LastAttackTime = Time.time;
+        //    AttackProjectile.transform.SetParent(transform, true);
+        //    AttackProjectile.transform.localPosition = new Vector3(0, 0, 1f);
+        //    AttackProjectile.useGravity = false;
+        //    AttackProjectile.velocity = Vector3.zero;
+        //    StartCoroutine(Attack());
+        //}
         if (atacado == true && timeFrenezi <= 8)
         {
             timeFrenezi = timeFrenezi + Time.deltaTime;
@@ -121,7 +164,10 @@ public class MaquinaEstados : MonoBehaviour
                 {
                     estadoAtual = Estado.Ataque;
                 }
-               
+               else if(CondicionalparaSeVirar())
+                {
+                    estadoAtual = Estado.ReceberAtk;
+                }
 
                 break;
 
@@ -176,6 +222,26 @@ public class MaquinaEstados : MonoBehaviour
                     estadoAtual = Estado.Ataque;
                 }
                 break;
+
+            case Estado.ReceberAtk:
+                tomarDano();
+
+                if (CondicionalVoltarPatrulha())
+                {
+                    vericarDistancia = true;
+                    estadoAtual = Estado.Patrulha;
+                }
+                else if (CondicionalPerseguicao())
+                {
+                    estadoAtual = Estado.Perseguicao;
+                }
+                else if (CondicionalAtaque())
+                {
+                    estadoAtual = Estado.Ataque;
+                }
+
+                break;
+                
         }
      
         if(vision ==true) 
@@ -195,7 +261,15 @@ public class MaquinaEstados : MonoBehaviour
             return false;
     }
 
-   
+   private bool CondicionalparaSeVirar()
+    {
+        if(vendoPlayer == false && atacado == true && prepararatk == false && atacando ==false) 
+        {
+            return true; 
+        }
+        else
+            return false;
+    }
         private bool CondicionalAtaque()
     {
         if (prepararatk == true && atacando == false)
@@ -429,6 +503,36 @@ public class MaquinaEstados : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    void tomarDano()
+    {
+        if(atacado == true && vendoPlayer == false && prepararatk ==false)
+        {
+            if(playerPos.position.x <= transform.position.x)
+            {
+                zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
+
+               
+            }
+            if(playerPos.position.x >= transform.position.x)
+            {
+                zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, 90, zoombie.transform.rotation.z);
+            }
+        }
+    }
+    // void arremeçarProjetil(Vector3 TargetPosition, Vector3 StartPosition)
+    //{
+    //    Vector3 displacemente = new Vector3(TargetPosition.x,StartPosition.y,TargetPosition.z) -StartPosition;
+    //    float deltaY = TargetPosition.y - StartPosition.y;
+    //    float deltaXZ =displacemente.magnitude;
+    //    Debug.Log($"Delta:({deltaXZ},{deltaY})");
+
+    //    Debug.Log($"Gravity: {Physics.gravity.y}\r\nDeltaY: { deltaY}\r\nDeltaXZ: {deltaXZ}");
+    //    float gravity = Mathf.Abs(Physics.gravity.y);
+    //    float trowStrength = Mathf.Clamp(gravity * (deltaY + Mathf.Sqrt(Mathf.Pow(deltaY, 2) + Mathf.Pow(deltaXZ, 2))), 0.01f, MaxTrowForce);
+
+
+
+    //}
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -451,10 +555,12 @@ public class MaquinaEstados : MonoBehaviour
         {
             if (other.tag == "C")
             {
+                
                 if (VidaInimigo >= 0)
                 {
                     VidaInimigo = VidaInimigo - 10;
                     VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
+                    atacado = true;
                 }
                
                 Destroy(other.gameObject);

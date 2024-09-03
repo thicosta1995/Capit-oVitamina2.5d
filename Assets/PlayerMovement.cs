@@ -140,64 +140,64 @@ public class PlayerMovement : MonoBehaviour
     }
     //private void FixedUpdate()
     //{
-    //    //if (control.enabled == false)
-    //    //{
-    //    //    timeCollider += Time.deltaTime;
+    //    if (control.enabled == false)
+    //    {
+    //        timeCollider += Time.deltaTime;
 
-    //    //    Debug.Log("time " + timeCollider);
+    //        Debug.Log("time " + timeCollider);
 
-    //    //    if (timeCollider >= 0.8)
-    //    //    {
-    //    //        rb.useGravity = true;
-    //    //        colliderPlayer.enabled = true;
+    //        if (timeCollider >= 0.8)
+    //        {
+    //            rb.useGravity = true;
+    //            colliderPlayer.enabled = true;
 
-    //    //        Debug.Log("entrou no 1");
+    //            Debug.Log("entrou no 1");
 
-    //    //    }
+    //        }
 
-    //    //    if (timeCollider >= 2)
-    //    //    {
-
-
-    //    //        control.enabled = true;
-    //    //        Debug.Log("entrou no 2");
-    //    //        CameraCair.active = true;
-    //    //        timeCollider = 0;
-    //    //    }
-    //    //    if (timeCollider >= 3)
-    //    //    {
+    //        if (timeCollider >= 2)
+    //        {
 
 
-    //    //        Debug.Log("time " + timeCollider);
-    //    //        timeCollider = 0;
-    //    //        CameraCair.active = true;
-    //    //        Debug.Log("entrou no 3");
-    //    //    }
+    //            control.enabled = true;
+    //            Debug.Log("entrou no 2");
+    //            CameraCair.active = true;
+    //            timeCollider = 0;
+    //        }
+    //        if (timeCollider >= 3)
+    //        {
+
+
+    //            Debug.Log("time " + timeCollider);
+    //            timeCollider = 0;
+    //            CameraCair.active = true;
+    //            Debug.Log("entrou no 3");
+    //        }
     //    }
 
-    //    //float moveInput = Input.GetAxis("Horizontal");
-    //    //Move(-moveInput);
+    //    float moveInput = Input.GetAxis("Horizontal");
+    //    Move(-moveInput);
 
-    //    //if (Input.GetButtonDown("Jump") && IsGrounded())
-    //    //{
-    //    //    Jump();
-    //    //}
-    //    //float xInput = Input.GetAxis("Horizontal");
-    //    //xVelocity = moveSpeed * xInput * Vector3.right;
+    //    if (Input.GetButtonDown("Jump") && IsGrounded())
+    //    {
+    //        Jump();
+    //    }
+    //    float xInput = Input.GetAxis("Horizontal");
+    //    xVelocity = moveSpeed * xInput * Vector3.right;
 
-    //    //yVelocity += gravity * Time.deltaTime * Vector3.down;
-    //    //if (controle.isGrounded)
-    //    //{
-    //    //    yVelocity = Vector3.down;
-    //    //}
+    //    yVelocity += gravity * Time.deltaTime * Vector3.down;
+    //    if (controle.isGrounded)
+    //    {
+    //        yVelocity = Vector3.down;
+    //    }
 
-    //    //if (Input.GetKeyDown(KeyCode.W) && controle.isGrounded)
-    //    //{
-    //    //    yVelocity = jumpSpeed * Vector3.up;
-    //    //}
-    //    //finalVelocity = -xVelocity + yVelocity;
-    //    //controle.Move(finalVelocity * Time.deltaTime);
-    //    //Hptx.text = Hp.ToString();
+    //    if (Input.GetKeyDown(KeyCode.W) && controle.isGrounded)
+    //    {
+    //        yVelocity = jumpSpeed * Vector3.up;
+    //    }
+    //    finalVelocity = -xVelocity + yVelocity;
+    //    controle.Move(finalVelocity * Time.deltaTime);
+    //    Hptx.text = Hp.ToString();
     //}
 
     //public void StopFocusTemporarily()
