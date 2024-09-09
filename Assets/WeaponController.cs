@@ -12,9 +12,9 @@ public class WeaponController : MonoBehaviour
     public Camera mainCamera;
     [SerializeField] private Rig aimRig;
     [SerializeField] public Transform Player;
-    [SerializeField] private ParticleSystem leite;
-    [SerializeField]private bool viraDoDireita;
-    [SerializeField]private bool viraDoEsquerda;
+    [SerializeField] public ParticleSystem leite;
+    [SerializeField]public bool viraDoDireita;
+    [SerializeField]public bool viraDoEsquerda;
     [SerializeField] public float municaoDeLeite;
     [SerializeField] private float municaoDeLeiteMax= 10000;
     [SerializeField] private Transform pivot;
@@ -170,22 +170,22 @@ public class WeaponController : MonoBehaviour
         }
 
         animaçãoLeite();
-        virarPlayer();
+        //virarPlayer();
     }
 
 
-    void virarPlayer()
-    {
-        if(viraDoDireita == true)
-        {
+    //void virarPlayer()
+    //{
+    //    if(viraDoDireita == true)
+    //    {
 
-         //   Player.rotation = Quaternion.Euler(0f, 0, 0f);
-        }
-        if(viraDoEsquerda == true)
-        {
-           // Player.rotation = Quaternion.Euler(0f, 180f, 0f);
-        }
-    }
+    //        Player.rotation = Quaternion.Euler(0f, 0, 0f);
+    //    }
+    //    if(viraDoEsquerda == true)
+    //    {
+    //        Player.rotation = Quaternion.Euler(0f, 180f, 0f);
+    //    }
+    //}
     void SetWeaponDirection(Vector3 direction)
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -275,16 +275,19 @@ public class WeaponController : MonoBehaviour
             StartCoroutine(DispararTirosExplosivosCoroutine());
         }
     }
-    void animaçãoLeite()
+  public  void animaçãoLeite()
 
     {
-        if(leite.isPlaying && municaoDeLeite>=0)
+        if (player.armaAtual == 0)
         {
-            municaoDeLeite = municaoDeLeite - 1;
-        }
-        else if(municaoDeLeite<=0)
-        {
-            leite.Stop();
+            if (leite.isPlaying && municaoDeLeite >= 0)
+            {
+                municaoDeLeite = municaoDeLeite - 1;
+            }
+            else if (municaoDeLeite <= 0)
+            {
+                leite.Stop();
+            }
         }
     }
     IEnumerator DispararTirosCoroutine()
