@@ -120,7 +120,7 @@ public class inimigo : MonoBehaviour
     {
         if (VidaInimigo <= 0)
         {
-            gameManeger.adicionarPontos(ValorPontos);
+            gameManeger.adicionarPontos();
           
             Destroy(gameObject);
         }

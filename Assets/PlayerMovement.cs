@@ -36,6 +36,10 @@ public class PlayerMovement : MonoBehaviour
     ParticleSystem leite;
     public float stopDuration = 4f; // Duração em segundos para parar o foco
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioClip HurtSound;
+    [SerializeField]private AudioClip WalkSound;
+
+    private AudioSource audioSource;
 
     public float horizontal;
     public CinemachineVirtualCamera virtualCamera;
@@ -49,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
         gravity = 2 * maxHeight / Mathf.Pow(timeToPeak, 2);
         jumpSpeed = gravity * timeToPeak;
         control.enabled = true;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
     }
     private void Start()
     {
@@ -74,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
             float horizontal = Input.GetAxis("Horizontal");
             xVelocity = moveSpeed * horizontal * Vector3.right;
             animator.SetFloat("movimento", horizontal);
+
             yVelocity += gravity * Time.deltaTime * Vector3.down;
             if (controle.isGrounded)
             {
@@ -96,7 +103,12 @@ public class PlayerMovement : MonoBehaviour
                 TrocarArma();
 
             }
+            if(horizontal !=0f)
+            {
+                audioSource.clip = WalkSound;
+                audioSource.Play();
 
+            }
             virarPlayerLeite();
             virarPlayerLaranja();
         }
@@ -286,14 +298,20 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("inimigoArC"))
         {
             Hp = Hp - 20;
+            audioSource.clip = HurtSound;
+            audioSource.Play();
         }
         if (collision.gameObject.CompareTag("inimigoArB"))
         {
             Hp = Hp - 20;
+            audioSource.clip = HurtSound;
+            audioSource.Play();
         }
         if (collision.gameObject.CompareTag("D"))
         {
             Hp = Hp - 20;
+            audioSource.clip = HurtSound;
+            audioSource.Play();
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -302,19 +320,28 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Hambuger"))
         {
             Hp = Hp - 20;
+            audioSource.clip = HurtSound;
+            audioSource.Play();
         }
         if (other.gameObject.CompareTag("B"))
         {
             Hp = Hp - 20;
+            audioSource.clip = HurtSound;
+            audioSource.Play();
+
         }
 
         if (other.gameObject.CompareTag("inimigoArC"))
         {
             Hp = Hp - 20;
+            audioSource.clip = HurtSound;
+            audioSource.Play();
         }
         if (other.gameObject.CompareTag("inimigoArB"))
         {
             Hp = Hp - 20;
+            audioSource.clip = HurtSound;
+            audioSource.Play();
         }
 
     }

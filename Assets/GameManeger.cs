@@ -20,8 +20,8 @@ public class GameManeger : MonoBehaviour
         
        
     }
-   public  void  adicionarPontos(int pontos)
+   public  void  adicionarPontos()
     {
-        pontuação = pontuação + pontos;
+        pontuação = pontuação + 1;
     }
 }

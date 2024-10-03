@@ -76,6 +76,7 @@ public class MaquinaEstados : MonoBehaviour
     private float LastAttackTime;
     [SerializeField]
     private float AttackDelay = 5f;
+    
     void Start()
     {
         // Inicializar o estado para Patrulha no início
@@ -98,16 +99,16 @@ public class MaquinaEstados : MonoBehaviour
         VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
         velocidadePadrão = velocidadePatrulha;
         
-        AttackProjectile.useGravity = false;
-        AttackProjectile.isKinematic = true;
-        SpherecastRadius = AttackProjectile.GetComponent<SphereCollider>().radius;
+        //AttackProjectile.useGravity = false;
+        //AttackProjectile.isKinematic = true;
+        //SpherecastRadius = AttackProjectile.GetComponent<SphereCollider>().radius;
         LastAttackTime = Random.Range(0, 5);
         int capacity = Mathf.CeilToInt(HistoricalResolution * HistoricalTime);
-        HistoricalPositions = new Queue<Vector3>(capacity);
-        for (int i = 0; i < capacity; i++)
-        {
-            HistoricalPositions.Enqueue(playerPos.position);
-        }
+        //HistoricalPositions = new Queue<Vector3>(capacity);
+        //for (int i = 0; i < capacity; i++)
+        //{
+        //    HistoricalPositions.Enqueue(playerPos.position);
+        //}
         HistoricalPositionInterval = HistoricalTime / HistoricalResolution;
 
     }
@@ -498,7 +499,7 @@ public class MaquinaEstados : MonoBehaviour
     {
         if (VidaInimigo <= 0)
         {
-            gameManeger.adicionarPontos(ValorPontos);
+            gameManeger.adicionarPontos();
 
             Destroy(gameObject);
         }

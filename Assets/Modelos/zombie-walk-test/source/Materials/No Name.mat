@@ -68,6 +68,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Textura_gradiente:
+        m_Texture: {fileID: 2800000, guid: 25041a9b49dbd1f43bed0a7aa4f3b1c0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2D:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}

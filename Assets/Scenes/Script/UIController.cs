@@ -59,7 +59,7 @@ public class UIController : MonoBehaviour
                 Time.timeScale = 0f;
                 MenuFim.SetActive(true);
                 MenuPause.SetActive(false);
-            pontosFim.text = "Pontos: " + gameManeger.pontuação.ToString();
+            pontosFim.text = gameManeger.pontuação.ToString() + "X";
             pontos.text = "";
 
         }
@@ -79,7 +79,7 @@ public class UIController : MonoBehaviour
             Debug.Log(ArmaLaranja.municaoDeLaraja);
         }
 
-        pontos.text = "Pontos: "+gameManeger.pontuação.ToString();
+        pontos.text = gameManeger.pontuação.ToString() +"X";
     }
     public void BottaoMenu()
     {

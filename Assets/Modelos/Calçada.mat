@@ -68,6 +68,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Textura_gradiente:
+        m_Texture: {fileID: 2800000, guid: 1622ea20b110ea74090dd93d94bcef7d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2D:
         m_Texture: {fileID: 2800000, guid: a69d0622b801a094d8b0703905dd2098, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -93,7 +97,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Dark_Color: 3.46
+    - _Dark_Color: 4.09
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -101,7 +105,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Lit_color: 0.15
+    - _Lit_color: 0.12
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -117,11 +121,11 @@ Material:
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _frenel_Power: 4.44
+    - _frenel_Power: 3.33
     - _fresnel_Thresshold: 0.06
     m_Colors:
     - _BaseColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
-    - _Color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+    - _Color: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []

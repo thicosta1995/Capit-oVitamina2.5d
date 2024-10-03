@@ -81,6 +81,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Textura_gradiente:
+        m_Texture: {fileID: 2800000, guid: 1622ea20b110ea74090dd93d94bcef7d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2D:
         m_Texture: {fileID: 2800000, guid: 3e30cf73e6f97ca46a7963c37ce3889f, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -106,7 +110,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Dark_Color: 2.36
+    - _Dark_Color: 1.45
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -114,7 +118,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Lit_color: 0.03
+    - _Lit_color: 0.04
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

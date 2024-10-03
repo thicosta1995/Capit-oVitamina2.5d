@@ -410,7 +410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &173284602
 RectTransform:
   m_ObjectHideFlags: 0
@@ -420,16 +420,16 @@ RectTransform:
   m_GameObject: {fileID: 173284601}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.69785357, y: 0.69785357, z: 0.69785357}
+  m_LocalScale: {x: 0.53006417, y: 0.53006417, z: 0.53006417}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2057855619}
-  m_Father: {fileID: 1253228881}
+  m_Father: {fileID: 1604017385}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -148}
+  m_AnchoredPosition: {x: -59.999935, y: -112.41541}
   m_SizeDelta: {x: 564.525, y: 183.531}
   m_Pivot: {x: 0.5000001, y: 0.61519235}
 --- !u!114 &173284603
@@ -478,7 +478,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 228497912}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: Jogar
+        m_MethodName: Fase1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -556,7 +556,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1604017385}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1203,7 +1203,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1604017385}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1290,7 +1290,7 @@ RectTransform:
   - {fileID: 1207170567}
   - {fileID: 1875319140}
   m_Father: {fileID: 1604017385}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2751,7 +2751,7 @@ RectTransform:
   m_Children:
   - {fileID: 1971905860}
   m_Father: {fileID: 1253228881}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3227,7 +3227,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 228497912}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: Jogar
+        m_MethodName: Fase1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3618,7 +3618,7 @@ RectTransform:
   m_Children:
   - {fileID: 1161645176}
   m_Father: {fileID: 1253228881}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4002,7 +4002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1253228881
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4015,7 +4015,6 @@ RectTransform:
   m_LocalScale: {x: 0.75956357, y: 0.75956357, z: 0.75956357}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 173284602}
   - {fileID: 1440334523}
   - {fileID: 1193731412}
   - {fileID: 818020789}
@@ -4675,7 +4674,7 @@ RectTransform:
   m_Children:
   - {fileID: 1966514698}
   m_Father: {fileID: 1253228881}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5311,6 +5310,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 173284602}
   - {fileID: 499234181}
   - {fileID: 228497911}
   - {fileID: 556781087}

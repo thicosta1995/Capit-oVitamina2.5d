@@ -35,6 +35,10 @@ public class WeaponController : MonoBehaviour
     public GameObject[] armas; // Um array de GameObjects representando suas diferentes armas.
     private int armaAtual = 0; // O índice da arma atual.
     [SerializeField] float posiçãoArmaAtual;
+    [SerializeField] private AudioClip FruiFallSound;
+    [SerializeField] private AudioClip FaucetSound;
+
+    private AudioSource audioSource;
     private float aimWeight;
   
 
@@ -53,6 +57,7 @@ public class WeaponController : MonoBehaviour
         semLeite = false;
         recarregarLeite = false;
         aimWeight = 1.0f;
+        audioSource = GetComponent<AudioSource>();
        
     }
     private void Update()
@@ -91,6 +96,8 @@ public class WeaponController : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1") && player.armaAtual == 0 && municaoDeLeite >0)
         {
+            audioSource.clip = FaucetSound;
+            audioSource.Play();
             leite.Play();
            
            
@@ -296,6 +303,8 @@ public class WeaponController : MonoBehaviour
         {
             foreach (Transform firePoint in firePoints)
             {
+                audioSource.clip = FruiFallSound;
+                audioSource.Play();
                 GameObject projectileGO = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
                 Rigidbody projectileRigidbody = projectileGO.GetComponent<Rigidbody>();
                 projectileRigidbody.AddForce(-firePoint.forward * projectileSpeed, ForceMode.Impulse);
