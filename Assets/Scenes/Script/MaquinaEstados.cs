@@ -21,20 +21,23 @@ public class MaquinaEstados : MonoBehaviour
         Perseguicao,
         Ataque,
         Repouso,
-        ReceberAtk
+        ReceberAtk,
+        VoltarnaZona
     }
 
     // Variável para armazenar o estado atual
     private Estado estadoAtual;
     private float velocidadePatrulha = 2.0f;
-
+    float timerDano;
     [SerializeField] private Animator animator;
     [SerializeField] private Animation animationAtk,animationIdle,animationWalk;
     [SerializeField] float velocidadePersiguição = 3.0f;
     [SerializeField] private bool frenezi;
     [SerializeField] private Transform playerPos;
     [SerializeField] float velocidadePadrão;
-    [SerializeField] float timeFrenezi;
+    [SerializeField] float timeFrenezi,timeFreneziMax;
+    [SerializeField] Transform limiteA, limiteB;
+    [SerializeField] private bool saiuLimite;
     private Rigidbody rb;
     [SerializeField]private bool atacado;
     public bool tomouTiro;
@@ -61,7 +64,8 @@ public class MaquinaEstados : MonoBehaviour
     public bool morreu = false;
     public GameManeger gameManeger;
     public float VidaInimigo;
-  
+    [SerializeField] private Transform pontoOrigem; // ponto de origem para limitar a perseguição
+    [SerializeField] private float limiteDistanciaPerseguicao = 10.0f;
     public int ValorPontos;
     public Transform posPlayerVision;
     public bool tomouDano;
@@ -76,6 +80,7 @@ public class MaquinaEstados : MonoBehaviour
     private float LastAttackTime;
     [SerializeField]
     private float AttackDelay = 5f;
+    public float timeReacao;
     
     void Start()
     {
@@ -98,6 +103,7 @@ public class MaquinaEstados : MonoBehaviour
         VidaBarra = GetComponentInChildren<BarraHpFlutuante>();
         VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
         velocidadePadrão = velocidadePatrulha;
+        saiuLimite = false;
         
         //AttackProjectile.useGravity = false;
         //AttackProjectile.isKinematic = true;
@@ -132,22 +138,38 @@ public class MaquinaEstados : MonoBehaviour
         //    AttackProjectile.velocity = Vector3.zero;
         //    StartCoroutine(Attack());
         //}
-        if (atacado == true && timeFrenezi <= 8)
+        if (atacado == true && timeFrenezi < timeFreneziMax)
         {
             timeFrenezi = timeFrenezi + Time.deltaTime;
             velocidadePatrulha = velocidadePersiguição;
             frenezi = true;
         }
-
-        else if (frenezi == true) 
+        else
         {
             velocidadePatrulha = velocidadePadrão;
             atacado = false;
             frenezi = false;
             timeFrenezi = 0;
         }
-        // Lança um raio da posição do inimigo em direção ao jogador
+
       
+        if(transform.position.x > limiteA.position.x)
+        {
+            saiuLimite = true;
+            Debug.Log("saiuDoA");
+        }
+        else
+          saiuLimite=false;
+        if (transform.position.x < limiteB.position.x)
+        {
+            saiuLimite = true;
+            Debug.Log("saiuDoB");
+        }
+        else
+            saiuLimite = false;
+        Debug.Log(estadoAtual);
+        // Lança um raio da posição do inimigo em direção ao jogador
+
         Morte();
         // Lógica da máquina de estado
         switch (estadoAtual)
@@ -169,7 +191,8 @@ public class MaquinaEstados : MonoBehaviour
                 {
                     estadoAtual = Estado.ReceberAtk;
                 }
-
+           
+                
                 break;
 
             case Estado.Perseguicao:
@@ -226,22 +249,23 @@ public class MaquinaEstados : MonoBehaviour
 
             case Estado.ReceberAtk:
                 tomarDano();
-
-                if (CondicionalVoltarPatrulha())
-                {
-                    vericarDistancia = true;
-                    estadoAtual = Estado.Patrulha;
-                }
-                else if (CondicionalPerseguicao())
-                {
-                    estadoAtual = Estado.Perseguicao;
-                }
-                else if (CondicionalAtaque())
-                {
-                    estadoAtual = Estado.Ataque;
-                }
-
-                break;
+               
+                        if (CondicionalPerseguicao())
+                        {
+                            estadoAtual = Estado.Perseguicao;
+                        }
+                        else if (CondicionalAtaque())
+                        {
+                            estadoAtual = Estado.Ataque;
+                        }
+                        else if (CondicionalVoltarPatrulha())
+                        {
+                            vericarDistancia = true;
+                            estadoAtual = Estado.Patrulha;
+                        }
+                    
+                
+                    break;
                 
         }
      
@@ -254,7 +278,7 @@ public class MaquinaEstados : MonoBehaviour
     // Exemplos de métodos de condição
     private bool CondicionalPerseguicao()
     {
-        if (vendoPlayer == true && acordado == true & prepararatk == false)
+        if (vendoPlayer == true && acordado == true & prepararatk == false && saiuLimite == false )
         {
             return true;
         }
@@ -264,7 +288,7 @@ public class MaquinaEstados : MonoBehaviour
 
    private bool CondicionalparaSeVirar()
     {
-        if(vendoPlayer == false && atacado == true && prepararatk == false && atacando ==false) 
+        if(vendoPlayer == false && atacado == true && prepararatk == false && atacando ==false && saiuLimite ==false) 
         {
             return true; 
         }
@@ -273,7 +297,7 @@ public class MaquinaEstados : MonoBehaviour
     }
         private bool CondicionalAtaque()
     {
-        if (prepararatk == true && atacando == false)
+        if (prepararatk == true && atacando == false && vendoPlayer ==true && saiuLimite ==false)
         {
             return true;
         }
@@ -295,9 +319,10 @@ public class MaquinaEstados : MonoBehaviour
         return false;
     }
 
+
     private bool CondicionalVoltarPatrulha()
     {
-        if (vendoPlayer == false && prepararatk == false && atacando == false)
+        if (vendoPlayer == false && prepararatk == false && atacando == false  && atacado == false)
         {
             vericarDistancia = true;
             return true;
@@ -319,7 +344,7 @@ public class MaquinaEstados : MonoBehaviour
         }
         return false;
     }
-
+    
     private void descanco()
     {
         tempoDescanco = tempoDescanco + Time.deltaTime;
@@ -331,16 +356,17 @@ public class MaquinaEstados : MonoBehaviour
     }
     private void perseguindoPlayer()
     {
+        float distanciaDoOrigem = Vector3.Distance(transform.position, pontoOrigem.position);
 
 
-        if (vendoPlayer == true)
+        if (vendoPlayer == true && saiuLimite == false && distanciaDoOrigem <= limiteDistanciaPerseguicao && atacando == false)
         {
             distaciandoPeDireito = Vector3.Distance(transform.position, PéDoplayerDireito.position);
             distaciandoPeEsquerdo = Vector3.Distance(transform.position, PéDoplayerEsquerdo.position);
 
             if (distaciandoPeDireito < distaciandoPeEsquerdo)
             {
-
+                
                 transform.Translate(velocidadePersiguição * Time.deltaTime, 0, 0);
                 zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, 90, zoombie.transform.rotation.z);
 
@@ -366,9 +392,35 @@ public class MaquinaEstados : MonoBehaviour
 
 
         }
+        else
+        {
+            // Se o inimigo passou do limite, ele interrompe a perseguição e volta à patrulha
+            vendoPlayer = false;
+            estadoAtual = Estado.Patrulha;
+            voltarParaOrigem();
+        }
 
+    }
+    private void voltarParaOrigem()
+    {
+        // Move o inimigo de volta ao ponto de origem
+        Vector3 direcaoDeVolta = (pontoOrigem.position - transform.position).normalized;
+        transform.Translate(direcaoDeVolta * velocidadePatrulha * Time.deltaTime);
+        // Rotaciona o inimigo de acordo com a direção que ele está voltando
+        if (direcaoDeVolta.x > 0)
+        {
+            zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, 90, zoombie.transform.rotation.z);
+        }
+        else
+        {
+            zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
+        }
 
-
+        // Se o inimigo voltou para o ponto de origem, ele retoma a patrulha
+        if (Vector3.Distance(transform.position, pontoOrigem.position) < 0.1f)
+        {
+            estadoAtual = Estado.Patrulha;
+        }
     }
     private void Patrulhar()
     {
@@ -388,7 +440,7 @@ public class MaquinaEstados : MonoBehaviour
        
 
         acordado = true;
-        if (vericarDistancia == true)
+        if (vericarDistancia == true && acordado ==true && vendoPlayer == false)
         {
             distaciaPontoA = Vector3.Distance(transform.position, pontoA.transform.position);
             distaciaPontoB = Vector3.Distance(transform.position, pontoB.transform.position);
@@ -412,9 +464,10 @@ public class MaquinaEstados : MonoBehaviour
             vericarDistancia = false;
         }
 
+      
 
 
-        if (transform.position.x >= pontoB.position.x && PontoB == true && PontoA == false)
+        if (transform.position.x >= pontoB.position.x && PontoB == true && PontoA == false && atacando == false )
         {
             zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
             transform.Translate(-velocidadePatrulha * Time.deltaTime, 0, 0);
@@ -427,7 +480,7 @@ public class MaquinaEstados : MonoBehaviour
             }
 
         }
-        else if (transform.position.x <= pontoB.position.x && PontoB == true && PontoA == false)
+        else if (transform.position.x <= pontoB.position.x && PontoB == true && PontoA == false && atacando == false )
         {
             zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, 90, zoombie.transform.rotation.z);
             transform.Translate(velocidadePatrulha * Time.deltaTime, 0, 0);
@@ -442,7 +495,7 @@ public class MaquinaEstados : MonoBehaviour
             }
         }
 
-        if (transform.position.x <= pontoA.position.x && PontoA == true && PontoB == false)
+        if (transform.position.x <= pontoA.position.x && PontoA == true && PontoB == false && atacando == false)
         {
 
             
@@ -456,7 +509,7 @@ public class MaquinaEstados : MonoBehaviour
 
             }
         }
-        else if (transform.position.x >= pontoA.position.x && PontoA == true && PontoB == false)
+        else if (transform.position.x >= pontoA.position.x && PontoA == true && PontoB == false && atacando == false)
         {
            
             zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
@@ -597,8 +650,10 @@ public class MaquinaEstados : MonoBehaviour
                     VidaInimigo = VidaInimigo - 10;
                     VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
                 }
+                
+               
                 atacado = true;
-
+              
             }
 
         }

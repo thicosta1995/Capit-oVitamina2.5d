@@ -76,7 +76,7 @@ public class UIController : MonoBehaviour
             imagemMuniçãoLeite.SetActive(false);
             imagemMuniçãoLaranja.SetActive(true);
             armaBarLaranja.fillAmount = ArmaLaranja.municaoDeLaraja / 300;
-            Debug.Log(ArmaLaranja.municaoDeLaraja);
+           
         }
 
         pontos.text = gameManeger.pontuação.ToString() +"X";
