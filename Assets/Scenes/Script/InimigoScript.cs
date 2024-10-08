@@ -14,6 +14,7 @@ public class InimigoScript : MonoBehaviour
     public float velocidadePatrulha = 2f; // Ajuste a velocidade conforme necessário
     private bool indoParaPontoB = true; // Começa indo para o ponto B
     private Animator animator; // O Animator do inimigo
+ 
 
     private void Start()
     {

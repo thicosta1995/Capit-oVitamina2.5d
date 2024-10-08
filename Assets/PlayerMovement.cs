@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
 
-            float horizontal = Input.GetAxis("Horizontal");
+            float horizontal = InputMannegerControl.GetMovementInput().x;
             xVelocity = moveSpeed * horizontal * Vector3.right;
             animator.SetFloat("movimento", horizontal);
 
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
                 yVelocity = Vector3.down;
             }
 
-            if (Input.GetKeyDown(KeyCode.W) && controle.isGrounded)
+            if (InputMannegerControl.GetJumpInput() && controle.isGrounded)
             {
                 yVelocity = jumpSpeed * Vector3.up;
             }

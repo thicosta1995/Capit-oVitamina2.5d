@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.Animations;
+using UnityEditor.U2D.Path.GUIFramework;
 
 public class WeaponController : MonoBehaviour
 {
@@ -37,9 +38,11 @@ public class WeaponController : MonoBehaviour
     [SerializeField] float posiçãoArmaAtual;
     [SerializeField] private AudioClip FruiFallSound;
     [SerializeField] private AudioClip FaucetSound;
-
+    private InputMannegerControl control;
     private AudioSource audioSource;
     private float aimWeight;
+    [SerializeField] bool soundPlay;
+    [SerializeField] bool jaTocou;
   
 
 
@@ -57,7 +60,9 @@ public class WeaponController : MonoBehaviour
         semLeite = false;
         recarregarLeite = false;
         aimWeight = 1.0f;
-        audioSource = GetComponent<AudioSource>();
+        soundPlay = false;
+
+    audioSource = GetComponent<AudioSource>();
        
     }
     private void Update()
@@ -86,26 +91,28 @@ public class WeaponController : MonoBehaviour
         }
         ////aimRig.weight = Mathf.Lerp(aimRig.weight,aimWeight,Time.deltaTime*20);
 
-        if (Input.GetButtonDown("Fire1") && player.armaAtual == 1 && municaoDeLaraja > 0)
+        if (InputMannegerControl.GetFireInput() && player.armaAtual == 1 && municaoDeLaraja > 0)
         {
+            audioSource.clip = FruiFallSound;
             DispararTiros();
         }
-        else if(Input.GetButtonUp("Fire1") && player.armaAtual == 1)
+        else if(InputMannegerControl.GetFireInput() && player.armaAtual == 1)
         {
 
         }
-        if (Input.GetButtonDown("Fire1") && player.armaAtual == 0 && municaoDeLeite >0)
+        if (InputMannegerControl.GetFireInput() && player.armaAtual == 0 && municaoDeLeite > 0)
         {
             audioSource.clip = FaucetSound;
-            audioSource.Play();
+            soundPlay = true;
             leite.Play();
-           
-           
-        }
-        else if(Input.GetButtonUp("Fire1") && player.armaAtual == 0)
-              leite.Stop();
 
-       
+
+        }
+        else if (InputMannegerControl.GetFireInput() == false && player.armaAtual == 0)
+        {
+            leite.Stop();
+            soundPlay = false;
+        }
         if (posiçãoArmaAtual <= 81 || posiçãoArmaAtual >= -61 && viraDoDireita == true)
         {
            
@@ -127,7 +134,31 @@ public class WeaponController : MonoBehaviour
             //    //Player.rotation = Quaternion.Euler(0f, 90, 0);
             
         }
-        if( posiçãoArmaAtual>=82 ||posiçãoArmaAtual<=-62)
+        if(soundPlay ==true)
+        {
+           
+          
+                audioSource.loop =true ;
+
+            
+            if (jaTocou == false)
+            {
+                audioSource.Play();
+                jaTocou = true;
+            }
+        }
+        else
+        {
+            audioSource.Stop();
+              jaTocou= false;
+            
+             
+
+             audioSource.loop = false;
+            
+
+        }
+        if ( posiçãoArmaAtual>=82 ||posiçãoArmaAtual<=-62)
         {
             if (posiçãoArmaAtual < -180)
             {
@@ -270,6 +301,8 @@ public class WeaponController : MonoBehaviour
         if (!isFiring)
         {
             isFiring = true;
+
+            audioSource.Play();
             StartCoroutine(DispararTirosCoroutine());
         }
     }
@@ -303,13 +336,12 @@ public class WeaponController : MonoBehaviour
         {
             foreach (Transform firePoint in firePoints)
             {
-                audioSource.clip = FruiFallSound;
-                audioSource.Play();
+
                 GameObject projectileGO = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
                 Rigidbody projectileRigidbody = projectileGO.GetComponent<Rigidbody>();
                 projectileRigidbody.AddForce(-firePoint.forward * projectileSpeed, ForceMode.Impulse);
                 municaoDeLaraja = municaoDeLaraja - 15;
-
+               
 
             }
 

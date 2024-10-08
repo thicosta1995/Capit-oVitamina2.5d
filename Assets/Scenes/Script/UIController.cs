@@ -10,7 +10,7 @@ public class UIController : MonoBehaviour
     [SerializeField] public Image fillbar, armaBarLeite, armaBarLaranja;
     [SerializeField] private Slider slider;
     [SerializeField] private GameObject imagemMuniçãoLeite, imagemMuniçãoLaranja;
-    [SerializeField] private GameObject MenuPause,MenuFim;
+    [SerializeField] private GameObject MenuPause,MenuFim,Ui;
     [SerializeField] private RestaurantControler restaurantControler;
     [SerializeField] private WeaponController ArmaLeite;
     [SerializeField] private GameManeger gameManeger;
@@ -29,21 +29,29 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))     
+        if (restaurantControler.RestaurantDestruido == false)
         {
-            if(isPause) 
+            if (Input.GetKeyDown(KeyCode.P))
             {
-                isPause = false;
-                Time.timeScale = 1f;
-                MenuPause.SetActive(false);
+                if (isPause)
+                {
+                    isPause = false;
+                    Time.timeScale = 1f;
+                    MenuPause.SetActive(false);
+                    Ui.SetActive(true);
+
+
+                }
+                else
+                {
+
+                    isPause = true;
+                    Time.timeScale = 0f;
+                    MenuPause.SetActive(true);
+                    Ui.SetActive(false);
+                }
+
             }
-            else{
-                
-                isPause = true;
-                Time.timeScale = 0f;
-                MenuPause.SetActive(true);
-            }
-        
         }
         if(player.Hp<=0)
         {
@@ -57,8 +65,10 @@ public class UIController : MonoBehaviour
         {
            
                 Time.timeScale = 0f;
+                Ui.SetActive(false);
                 MenuFim.SetActive(true);
                 MenuPause.SetActive(false);
+
             pontosFim.text = gameManeger.pontuação.ToString() + "X";
             pontos.text = "";
 
