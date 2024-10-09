@@ -9,15 +9,16 @@ using UnityEditor.U2D.Path.GUIFramework;
 public class WeaponController : MonoBehaviour
 {
     public List<Transform> firePoints;
-    
+
+
     public Camera mainCamera;
     [SerializeField] private Rig aimRig;
     [SerializeField] public Transform Player;
     [SerializeField] public ParticleSystem leite;
-    [SerializeField]public bool viraDoDireita;
-    [SerializeField]public bool viraDoEsquerda;
+    [SerializeField] public bool viraDoDireita;
+    [SerializeField] public bool viraDoEsquerda;
     [SerializeField] public float municaoDeLeite;
-    [SerializeField] private float municaoDeLeiteMax= 10000;
+    [SerializeField] private float municaoDeLeiteMax = 10000;
     [SerializeField] private Transform pivot;
     public bool semLeite;
     private Transform esquerda, direita;
@@ -29,7 +30,7 @@ public class WeaponController : MonoBehaviour
     public float intervaloTiros = 0.1f;
     public GameObject explosiveProjectilePrefab;
     [SerializeField] public float municaoDeLaraja;
-    [SerializeField] private float municaoDeLarajaMax= 300;
+    [SerializeField] private float municaoDeLarajaMax = 300;
     public bool recarregandoAlaranja;
     public bool semLaranja;
     private bool isFiring; // Indica se a arma está atirando
@@ -43,7 +44,7 @@ public class WeaponController : MonoBehaviour
     private float aimWeight;
     [SerializeField] bool soundPlay;
     [SerializeField] bool jaTocou;
-  
+    
 
 
 
@@ -62,22 +63,22 @@ public class WeaponController : MonoBehaviour
         aimWeight = 1.0f;
         soundPlay = false;
 
-    audioSource = GetComponent<AudioSource>();
-       
+        audioSource = GetComponent<AudioSource>();
+
     }
     private void Update()
     {
-      
-       // Vector3 mousePositionScreen = Input.mousePosition;
-      
+
+        // Vector3 mousePositionScreen = Input.mousePosition;
+
 
 
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if(municaoDeLaraja <=0)
+        if (municaoDeLaraja <= 0)
         {
             semLaranja = true;
         }
-        if(municaoDeLeite <= 0) 
+        if (municaoDeLeite <= 0)
         {
             semLeite = true;
         }
@@ -85,7 +86,7 @@ public class WeaponController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             Vector3 direction = hit.point - pivot.position;
-          pivot.forward = direction;
+            pivot.forward = direction;
             pivot.transform.rotation = Quaternion.LookRotation(direction);
             SetWeaponDirection(direction);
         }
@@ -96,7 +97,7 @@ public class WeaponController : MonoBehaviour
             audioSource.clip = FruiFallSound;
             DispararTiros();
         }
-        else if(InputMannegerControl.GetFireInput() && player.armaAtual == 1)
+        else if (InputMannegerControl.GetFireInput() && player.armaAtual == 1)
         {
 
         }
@@ -115,8 +116,8 @@ public class WeaponController : MonoBehaviour
         }
         if (posiçãoArmaAtual <= 81 || posiçãoArmaAtual >= -61 && viraDoDireita == true)
         {
-           
-            if(posiçãoArmaAtual >= 82 || posiçãoArmaAtual<=-61 )
+
+            if (posiçãoArmaAtual >= 82 || posiçãoArmaAtual <= -61)
             {
                 viraDoEsquerda = false;
                 viraDoDireita = true;
@@ -124,23 +125,23 @@ public class WeaponController : MonoBehaviour
                 Debug.Log("Entrou no primeiro");
             }
 
-            else if(posiçãoArmaAtual>=-61)
+            else if (posiçãoArmaAtual >= -61)
             {
                 viraDoEsquerda = true;
                 viraDoDireita = false;
                 Debug.Log("Entrou no Segundo");
             }
-           
-            //    //Player.rotation = Quaternion.Euler(0f, 90, 0);
-            
-        }
-        if(soundPlay ==true)
-        {
-           
-          
-                audioSource.loop =true ;
 
-            
+            //    //Player.rotation = Quaternion.Euler(0f, 90, 0);
+
+        }
+        if (soundPlay == true)
+        {
+
+
+            audioSource.loop = true;
+
+
             if (jaTocou == false)
             {
                 audioSource.Play();
@@ -150,15 +151,15 @@ public class WeaponController : MonoBehaviour
         else
         {
             audioSource.Stop();
-              jaTocou= false;
-            
-             
+            jaTocou = false;
 
-             audioSource.loop = false;
-            
+
+
+            audioSource.loop = false;
+
 
         }
-        if ( posiçãoArmaAtual>=82 ||posiçãoArmaAtual<=-62)
+        if (posiçãoArmaAtual >= 82 || posiçãoArmaAtual <= -62)
         {
             if (posiçãoArmaAtual < -180)
             {
@@ -166,7 +167,7 @@ public class WeaponController : MonoBehaviour
                 viraDoDireita = true;
                 Debug.Log("Entrou no terceiro");
             }
-            else if( posiçãoArmaAtual >= 81)
+            else if (posiçãoArmaAtual >= 81)
             {
                 viraDoEsquerda = false;
                 viraDoDireita = true;
@@ -200,7 +201,7 @@ public class WeaponController : MonoBehaviour
             semLaranja = false;
             recarregandoAlaranja = false;
         }
-        if(recarregarLeite == true)
+        if (recarregarLeite == true)
         {
             municaoDeLeite = municaoDeLeiteMax;
             semLeite = false;
@@ -228,9 +229,9 @@ public class WeaponController : MonoBehaviour
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         // transform.rotation = Quaternion.Euler(0f, 0f, angle);
-        pivot.rotation = Quaternion.Euler(0f, 0f, angle-85);
+        pivot.rotation = Quaternion.Euler(0f, 0f, angle - 85);
         // pivot.RotateAround(pivot.position,direction, angle-80);
-      //  pivot.RotateAroundLocal(direction, angle);
+        //  pivot.RotateAroundLocal(direction, angle);
         // pivot.eulerAngles =new Vector3(0f, 0f, angle);  
 
 
@@ -264,7 +265,7 @@ public class WeaponController : MonoBehaviour
         //    viraDoEsquerda = false;
         //}
         posiçãoArmaAtual = angle;
-    
+
 
 
     }
@@ -315,7 +316,7 @@ public class WeaponController : MonoBehaviour
             StartCoroutine(DispararTirosExplosivosCoroutine());
         }
     }
-  public  void animaçãoLeite()
+    public void animaçãoLeite()
 
     {
         if (player.armaAtual == 0)
@@ -341,7 +342,7 @@ public class WeaponController : MonoBehaviour
                 Rigidbody projectileRigidbody = projectileGO.GetComponent<Rigidbody>();
                 projectileRigidbody.AddForce(-firePoint.forward * projectileSpeed, ForceMode.Impulse);
                 municaoDeLaraja = municaoDeLaraja - 15;
-               
+
 
             }
 
@@ -349,7 +350,7 @@ public class WeaponController : MonoBehaviour
         }
 
         isFiring = false;
-     
+
     }
 
     IEnumerator DispararTirosExplosivosCoroutine()
@@ -364,7 +365,8 @@ public class WeaponController : MonoBehaviour
             //}
             yield return new WaitForSeconds(intervaloTiros);
         }
-        
+
         isFiring = false;
     }
+    
 }
