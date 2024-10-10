@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.Animations;
-using UnityEditor.U2D.Path.GUIFramework;
 
 public class WeaponController : MonoBehaviour
 {

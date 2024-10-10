@@ -8,9 +8,9 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private PlayerMovement player;
     [SerializeField] public Image fillbar, armaBarLeite, armaBarLaranja;
-    [SerializeField] private Slider slider;
+    [SerializeField] private Slider slider,sliderMusic,sliderSound;
     [SerializeField] private GameObject imagemMuniçãoLeite, imagemMuniçãoLaranja;
-    [SerializeField] private GameObject MenuPause,MenuFim,Ui;
+    [SerializeField] private GameObject MenuPause,MenuFim,Ui,MenuOpções;
     [SerializeField] private RestaurantControler restaurantControler;
     [SerializeField] private WeaponController ArmaLeite;
     [SerializeField] private GameManeger gameManeger;
@@ -19,9 +19,13 @@ public class UIController : MonoBehaviour
     [SerializeField]private string scena, scena1;
 
     private bool isPause;
+    [SerializeField]private bool opçãoActive;
     // Start is called before the first frame update
     void Start()
     {
+        MenuPause.SetActive(false);
+        Ui.SetActive(true);
+        MenuOpções.SetActive(false);
         Time.timeScale = 1.0f;
 
     }
@@ -33,24 +37,43 @@ public class UIController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.P))
             {
-                if (isPause)
+                if (isPause && opçãoActive == false)
                 {
                     isPause = false;
                     Time.timeScale = 1f;
                     MenuPause.SetActive(false);
                     Ui.SetActive(true);
-
+                    
 
                 }
+
                 else
                 {
+                   
+                        isPause = true;
+                        Time.timeScale = 0f;
+                        MenuPause.SetActive(true);
+                        Ui.SetActive(false);
+                        MenuOpções.SetActive(false);
+                    
+                   
 
-                    isPause = true;
-                    Time.timeScale = 0f;
-                    MenuPause.SetActive(true);
-                    Ui.SetActive(false);
                 }
+               
 
+            }
+            if (opçãoActive == true)
+            {
+                MenuPause.SetActive(false);
+                Ui.SetActive(false);
+                MenuOpções.SetActive(true);
+
+            }
+            else
+            {
+                MenuPause.SetActive(true);
+                Ui.SetActive(false);
+                MenuOpções.SetActive(false);
             }
         }
         if(player.Hp<=0)
@@ -102,5 +125,13 @@ public class UIController : MonoBehaviour
     public void Sair()
     {
         Application.Quit();
+    }
+    public void Opções()
+    {
+        opçãoActive = true; 
+    }
+    public void Voltar()
+    {
+        opçãoActive = false;
     }
 }
