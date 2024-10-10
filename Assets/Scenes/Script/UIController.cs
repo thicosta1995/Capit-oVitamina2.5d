@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using UnityEngine.Audio;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private PlayerMovement player;
@@ -17,16 +17,24 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pontos,pontosFim;
     [SerializeField] private WeaponController ArmaLaranja;
     [SerializeField]private string scena, scena1;
-
+    [SerializeField] AudioMixer audioMixer;
     private bool isPause;
-    [SerializeField]private bool opçãoActive;
+    [SerializeField]private bool opçãoActive = false;
+    const string MIXER_MUSIC = "MusicParam";
+    const string MIXER_SFC = "SoundParam";
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        sliderMusic.onValueChanged.AddListener(SetMusicValue);
+        sliderSound.onValueChanged.AddListener(SetSoundValue);
         MenuPause.SetActive(false);
         Ui.SetActive(true);
         MenuOpções.SetActive(false);
         Time.timeScale = 1.0f;
+    }
+    void Start()
+    {
+     
 
     }
 
@@ -69,12 +77,7 @@ public class UIController : MonoBehaviour
                 MenuOpções.SetActive(true);
 
             }
-            else
-            {
-                MenuPause.SetActive(true);
-                Ui.SetActive(false);
-                MenuOpções.SetActive(false);
-            }
+
         }
         if(player.Hp<=0)
         {
@@ -133,5 +136,16 @@ public class UIController : MonoBehaviour
     public void Voltar()
     {
         opçãoActive = false;
+        MenuPause.SetActive(true);
+        Ui.SetActive(false);
+        MenuOpções.SetActive(false);
+    }
+    private void SetMusicValue(float value)
+    {
+        audioMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value) * 20);
+    }
+    private void SetSoundValue(float value)
+    {
+        audioMixer.SetFloat(MIXER_SFC, Mathf.Log10(value) * 20);
     }
 }
