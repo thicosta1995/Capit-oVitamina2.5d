@@ -12,6 +12,9 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject painelCreditos;
     [SerializeField] private GameObject painelFase;
     [SerializeField] private GameObject painelSelecionarFase;
+    [SerializeField] private GameObject painelHistoria;
+    [SerializeField] private GameObject painelTutotial;
+    [SerializeField] private GameObject MenuGeral;
     public bool terminouFase1;
     public bool terminouFase2;
     public bool terminouFase3;
@@ -24,6 +27,9 @@ public class MenuController : MonoBehaviour
         painelCreditos.SetActive(false);
         painelFase.SetActive(false);
         painelSelecionarFase.SetActive(false);
+        painelHistoria.SetActive(false);
+        painelTutotial.SetActive(false);
+        MenuGeral.SetActive(true);
 
     }
     public void Jogar()
@@ -41,6 +47,9 @@ public class MenuController : MonoBehaviour
         painelCreditos.SetActive(false);
         painelFase.SetActive(false);
         painelSelecionarFase.SetActive(false);
+        painelHistoria.SetActive(false);
+        painelTutotial.SetActive(false);
+        MenuGeral.SetActive(true);
     }
     public void OpçãoJogar()
     {
@@ -49,6 +58,9 @@ public class MenuController : MonoBehaviour
         painelCreditos.SetActive(false);
         painelFase.SetActive(true);
         painelSelecionarFase.SetActive(false);
+        painelHistoria.SetActive(false);
+        painelTutotial.SetActive(false);
+        MenuGeral.SetActive(true);
     }
     public void SelecionarFase()
     {
@@ -57,12 +69,37 @@ public class MenuController : MonoBehaviour
         painelCreditos.SetActive(false);
         painelFase.SetActive(false);
         painelSelecionarFase.SetActive(true);
+        painelHistoria.SetActive(false);
+        painelTutotial.SetActive(false);
+        MenuGeral.SetActive(true);
     }
     public void OpcoesFechar()
     {
 
     }
+    public void OpçãoHistoria()
+    {
+        PainelMenuPrincipal.SetActive(false);
+        painelOpcoes.SetActive(false);
+        painelCreditos.SetActive(false);
+        painelFase.SetActive(false);
+        painelSelecionarFase.SetActive(false);
+        painelHistoria.SetActive(true );
+        painelTutotial.SetActive(false );
+        MenuGeral.SetActive(false);
+    }
+    public void OpçãoTutorial()
+    {
+        PainelMenuPrincipal.SetActive(false);
+        painelOpcoes.SetActive(false);
+        painelCreditos.SetActive(false);
+        painelFase.SetActive(false);
+        painelSelecionarFase.SetActive(false);
+        painelHistoria.SetActive(false);
+        painelTutotial.SetActive(true);
+        MenuGeral.SetActive(false);
 
+    }
     public void Creditos()
     {
         painelCreditos.SetActive (true);
@@ -70,6 +107,9 @@ public class MenuController : MonoBehaviour
         PainelMenuPrincipal.SetActive (false);
         painelFase.SetActive(false);
         painelSelecionarFase.SetActive(false);
+        painelHistoria.SetActive(false);
+        painelTutotial.SetActive(false);
+        MenuGeral.SetActive(true);
     }
     public void Sair() 
     {
@@ -83,5 +123,7 @@ public class MenuController : MonoBehaviour
         painelCreditos.SetActive(false);
         painelFase.SetActive(false);
         painelSelecionarFase.SetActive(false);
+        painelHistoria.SetActive(false);
+        painelTutotial.SetActive(false);
     }
 }

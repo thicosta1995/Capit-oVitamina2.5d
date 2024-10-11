@@ -84,7 +84,9 @@ public class UIController : MonoBehaviour
 
             Time.timeScale = 0f;
             MenuFim.SetActive(true);
+            Ui.SetActive(false);
             MenuPause.SetActive(false);
+            
 
         }
         if (restaurantControler.RestaurantDestruido == true)
