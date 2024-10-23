@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 yVelocity;
     public Vector3 finalVelocity;
     public Rigidbody rb;
+    public float forçaAgua;
     public float gravity;
     public float timeCollider;
     private bool isJumping = false;
@@ -58,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
+
         animator.SetBool("leite", true);
         animator.SetBool("LaranjaAtivo", false);
         
@@ -76,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         if (control.enabled == true)
         {
 
+           
 
             float horizontal = InputMannegerControl.GetMovementInput().x;
             xVelocity = moveSpeed * horizontal * Vector3.right;
@@ -343,7 +346,7 @@ public class PlayerMovement : MonoBehaviour
             audioSource.clip = HurtSound;
             audioSource.Play();
         }
-
+     
     }
     private void OnTriggerStay(Collider other)
     {
@@ -360,7 +363,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 armaLeite.recarregarLeite = true;
             }
+         
         }
+        if (other.gameObject.CompareTag("agua"))
+        {
+
+            rb.AddForce(new Vector3(0, 2, 0) * forçaAgua);
+            Debug.Log("entrou");
+        }
+
         //if (other.gameObject.CompareTag("Buraco"))
         //{
         //    colliderPlayer.enabled = false;

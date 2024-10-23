@@ -19,6 +19,7 @@ TagManager:
   - inimigoArB
   - Buraco
   - Enemy
+  - agua
   layers:
   - Default
   - TransparentFX
