@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207490594115646577}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.0000076293945, y: 0, z: 0}
+  m_LocalPosition: {x: 0.0000076293945, y: 0, z: 15.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,7 +47,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  emitterVelocityMode: 1
+  emitterVelocityMode: 0
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.13705944, g: 0.8227942, b: 0.8301887, a: 1}
+      maxColor: {r: 0.9622642, g: 0.4515363, b: 0.004538993, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4845,7 +4845,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207490594857417129}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -127.9, y: 0, z: 0}
+  m_LocalPosition: {x: -127.9, y: 0, z: -5.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5197,6 +5197,7 @@ GameObject:
   - component: {fileID: 207490593849595321}
   - component: {fileID: 207490593849595320}
   - component: {fileID: 1518342482916595294}
+  - component: {fileID: 1717934010}
   m_Layer: 0
   m_Name: hidrante_Final (1)
   m_TagString: agua
@@ -5211,7 +5212,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017899592847386862}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -192.4, y: -1.4486194, z: -6.7548304}
   m_LocalScale: {x: 0.1993664, y: 0.1993664, z: 0.1993664}
   m_ConstrainProportionsScale: 0
@@ -5259,8 +5260,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.7758336, y: 18.967005, z: 5.015914}
-  m_Center: {x: -127.49805, y: 8.983514, z: -2.007935}
+  m_Size: {x: 4.7758336, y: 18.967005, z: 29.816465}
+  m_Center: {x: -127.49805, y: 8.983514, z: 5.596426}
 --- !u!54 &207490593849595320
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5272,10 +5273,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &1518342482916595294
 MonoBehaviour:
@@ -5291,7 +5292,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 207490593849595320}
   rbHidrante: {fileID: 0}
-  velocidade: 0
+  velocidade: 20000
+  particleSystem: {fileID: 207490594115646540}
+  timeActive: 5
+  timeAtual: 0
+  animator: {fileID: 0}
+--- !u!95 &1717934010
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017899592847386862}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d9470cb6ca9f7649ac5f8ed280dcbe4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1814138566130196385
 GameObject:
   m_ObjectHideFlags: 0
@@ -6481,7 +6506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4771730692577231569}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -128.1, y: 0, z: 0}
+  m_LocalPosition: {x: -128.1, y: -1.7, z: 9.8}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []

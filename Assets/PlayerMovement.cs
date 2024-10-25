@@ -346,7 +346,13 @@ public class PlayerMovement : MonoBehaviour
             audioSource.clip = HurtSound;
             audioSource.Play();
         }
-     
+        if (other.gameObject.CompareTag("agua"))
+        {
+
+            Hp = Hp - 10;
+            audioSource.clip = HurtSound;
+        }
+
     }
     private void OnTriggerStay(Collider other)
     {
@@ -365,12 +371,7 @@ public class PlayerMovement : MonoBehaviour
             }
          
         }
-        if (other.gameObject.CompareTag("agua"))
-        {
-
-            rb.AddForce(new Vector3(0, 2, 0) * forçaAgua);
-            Debug.Log("entrou");
-        }
+   
 
         //if (other.gameObject.CompareTag("Buraco"))
         //{
