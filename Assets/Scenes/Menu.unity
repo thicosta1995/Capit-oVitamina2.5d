@@ -1952,7 +1952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &556781087
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4133,6 +4133,179 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872525991}
+  m_CullTransparentMesh: 1
+--- !u!1 &879578296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 879578297}
+  - component: {fileID: 879578299}
+  - component: {fileID: 879578298}
+  m_Layer: 5
+  m_Name: Creditos modelos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &879578297
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879578296}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.7647724, y: 3.7647724, z: 3.7647724}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1740277264}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000071493, y: 0}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &879578298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879578296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: '"Tiger''s Burgers V2" (https://skfb.ly/6YzoC) by mertbbicak is licensed
+    under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+    "Roman
+    Residencial Building" (https://skfb.ly/oq7xz) by macolen is licensed under Creative
+    Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+    "Burger
+    Van WIP (v0.3)" (https://skfb.ly/opNIt) by LordSamueliSolo is licensed under
+    CC Attribution-NonCommercial-NoDerivs (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+    "Old
+    Rusty Car" (https://skfb.ly/LxRy) by Renafox is licensed under Creative Commons
+    Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).
+
+    "Hidrante
+    Low Poly" (https://skfb.ly/6Uq7Y) by marcos.driguez is licensed under Creative
+    Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+    "Zombie
+    Walk Test"(https://skfb.ly/6RPU6) by oscar creativo is licensed under Creative
+    Commons Attribution(https://creativecommons.org/licenses/by/4.0/).
+
+    "Muscle
+    Man"(https://skfb.ly/6CLNZ) by Samy Belaloui is licensed under Creative Commons
+    Attribution(https://creativecommons.org/licenses/by/4.0/).
+
+    "Predio AR gemelo"(https://skfb.ly/6XJWY)
+    by gemelo is licensed under Creative Commons Attribution(https://creativecommons.org/licenses/by/4.0/)
+
+    "Roman
+    Residencial Building"(https://skfb.ly/oq7xz)by macolen is licensed under Creative
+    Commons Attribution(https://creativecommons.org/licenses/by/4.0/)
+
+    "New
+    York City Brownstone Building v1"(https://free3d.com/3d-model/new-york-city-brownstone-building-v1--277076.html)by
+    printable_models licensed under Creative Commons Attribution(https://creativecommons.org/licenses/by/4.0/)
+
+'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: b31221270b042984e87ecceeb5b97baf, type: 2}
+  m_sharedMaterial: {fileID: 7488955917065603015, guid: b31221270b042984e87ecceeb5b97baf, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 18
+  m_fontSizeBase: 8.9
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -151.94806, y: 0, z: -270.75116, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &879578299
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879578296}
   m_CullTransparentMesh: 1
 --- !u!1 &908031679
 GameObject:
@@ -7460,7 +7633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1740277264
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7475,6 +7648,7 @@ RectTransform:
   m_Children:
   - {fileID: 1008008423}
   - {fileID: 311590696}
+  - {fileID: 879578297}
   m_Father: {fileID: 556781087}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7542,12 +7716,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Em um mundo se passa num numa ep\xF3ca ap\xF3s eventos  apocal\xEDptico
-    causado por empresas de fast food que dominaram o mundo com uma droga que faz
-    seus clientes dependentes por aquele alimento gerando uma  uma falta de vitaminas,
-    e acaba surgindo uma resist\xEAncia que er\xE1 contra essas comidas e com isso
-    surge o heroi Capit\xE3o vitamina que \xE9 um nutricionista que tenta salvar
-    a humanidade os curando usando suas armas com vitaminas que anulam as depend\xEAncias.\r\n\r\n"
+  m_text: "Em um mundo se passa numa \xE9poca ap\xF3s eventos apocal\xEDpticos causados
+    por empresas de fast food que dominaram o mundo com uma droga que faz seus clientes
+    dependentes por aquele alimento, gerando uma falta de vitaminas, e acaba surgindo
+    uma resist\xEAncia que ser\xE1 contra essas comidas, e com isso surge o her\xF3i
+    Capit\xE3o vitamina, que \xE9 um nutricionista que tenta salvar a humanidade,
+    curando-os usando suas armas com vitaminas que anulam as depend\xEAncias.\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b31221270b042984e87ecceeb5b97baf, type: 2}
   m_sharedMaterial: {fileID: 7488955917065603015, guid: b31221270b042984e87ecceeb5b97baf, type: 2}

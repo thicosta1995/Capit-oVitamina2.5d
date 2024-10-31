@@ -26,7 +26,11 @@ public class MaquinaEstados : MonoBehaviour
     }
 
     // Vari·vel para armazenar o estado atual
+   
     private Estado estadoAtual;
+    [SerializeField]private Transform[] carros;
+    private int contadorCarro;
+    private bool carroNafrente;
     private float velocidadePatrulha = 2.0f;
     float timerDano;
     [SerializeField] private Animator animator;
@@ -43,7 +47,7 @@ public class MaquinaEstados : MonoBehaviour
     public bool tomouTiro;
     public Collider vis„o;
 
-    private float distaciandoPeEsquerdo, distaciandoPeDireito;
+    private float distaciandoPeEsquerdo, distaciandoPeDireito,distanciaCarro1,distanciaCarro2;
     [SerializeField] private bool prepararatk;
     [SerializeField] private GameObject arma;
     [SerializeField] private bool atacando, acordado, vericarDistancia;
@@ -104,7 +108,7 @@ public class MaquinaEstados : MonoBehaviour
         VidaBarra.UpDateHealhBar(VidaInimigo, maxHP);
         velocidadePadr„o = velocidadePatrulha;
         saiuLimite = false;
-        
+        contadorCarro = carros.Length;
         //AttackProjectile.useGravity = false;
         //AttackProjectile.isKinematic = true;
         //SpherecastRadius = AttackProjectile.GetComponent<SphereCollider>().radius;
@@ -121,6 +125,19 @@ public class MaquinaEstados : MonoBehaviour
 
     void Update()
     {
+
+
+
+
+        if (contadorCarro > 0)
+        {
+            distanciaCarro1 = Vector3.Distance(transform.position, carros[0].position);
+
+            if (contadorCarro == 2)
+            {
+                distanciaCarro2 = Vector3.Distance(transform.position, carros[1].position);
+            }
+        }
         //if (Time.time > LastAttackTime + AttackDelay
         //   && Physics.SphereCast(
         //       transform.position,
@@ -254,10 +271,7 @@ public class MaquinaEstados : MonoBehaviour
                         {
                             estadoAtual = Estado.Perseguicao;
                         }
-                        else if (CondicionalAtaque())
-                        {
-                            estadoAtual = Estado.Ataque;
-                        }
+                       
                         else if (CondicionalVoltarPatrulha())
                         {
                             vericarDistancia = true;
@@ -328,6 +342,11 @@ public class MaquinaEstados : MonoBehaviour
             return true;
 
         }
+        if(carroNafrente == true && prepararatk == false && atacando == false && atacado == false)
+        {
+            vericarDistancia = true;
+            return true;
+        }
 
         // Implemente a lÛgica para verificar se deve voltar para o estado de patrulha
         return false;
@@ -364,28 +383,76 @@ public class MaquinaEstados : MonoBehaviour
             distaciandoPeDireito = Vector3.Distance(transform.position, PÈDoplayerDireito.position);
             distaciandoPeEsquerdo = Vector3.Distance(transform.position, PÈDoplayerEsquerdo.position);
 
-            if (distaciandoPeDireito < distaciandoPeEsquerdo)
+
+            if (distaciandoPeDireito < distaciandoPeEsquerdo )
             {
                 
-                transform.Translate(velocidadePersiguiÁ„o * Time.deltaTime, 0, 0);
-                zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, 90, zoombie.transform.rotation.z);
-
-                if (PÈDoplayerDireito.position.x <= transform.position.x)
+                if(contadorCarro>0)
                 {
-                    prepararatk = true;
+                    if(distanciaCarro1 <distaciandoPeDireito)
+                    {
+                        carroNafrente = true;
+                    }
+                  
+                    else
+                    {
+                        carroNafrente = false;
+                        transform.Translate(velocidadePersiguiÁ„o * Time.deltaTime, 0, 0);
+                        zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, 90, zoombie.transform.rotation.z);
+
+                        if (PÈDoplayerDireito.position.x <= transform.position.x)
+                        {
+                            prepararatk = true;
+                        }
+                    }
+
+                }else
+                {
+                    transform.Translate(velocidadePersiguiÁ„o * Time.deltaTime, 0, 0);
+                    zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, 90, zoombie.transform.rotation.z);
+
+                    if (PÈDoplayerDireito.position.x <= transform.position.x)
+                    {
+                        prepararatk = true;
+                    }
+
                 }
 
 
             }
             else
             {
-                transform.Translate(-velocidadePersiguiÁ„o * Time.deltaTime, 0, 0);
-                zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
-
-                if (PÈDoplayerEsquerdo.position.x >= transform.position.x)
+                if (contadorCarro > 0)
                 {
-                    prepararatk = true;
+                    if (distanciaCarro1 < distaciandoPeEsquerdo)
+                    {
+                        carroNafrente = true;
+                    }
+                  
+                    else
+                    {
+                        carroNafrente = false;
+                        transform.Translate(-velocidadePersiguiÁ„o * Time.deltaTime, 0, 0);
+                        zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
+
+                        if (PÈDoplayerEsquerdo.position.x >= transform.position.x)
+                        {
+                            prepararatk = true;
+                        }
+                    }
+
                 }
+                else
+                {
+                    transform.Translate(-velocidadePersiguiÁ„o * Time.deltaTime, 0, 0);
+                    zoombie.transform.rotation = Quaternion.Euler(zoombie.transform.rotation.x, -90, zoombie.transform.rotation.z);
+
+                    if (PÈDoplayerEsquerdo.position.x >= transform.position.x)
+                    {
+                        prepararatk = true;
+                    }
+                }
+         
 
 
             }

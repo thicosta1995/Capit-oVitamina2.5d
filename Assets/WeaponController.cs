@@ -19,6 +19,7 @@ public class WeaponController : MonoBehaviour
     [SerializeField] public float municaoDeLeite;
     [SerializeField] private float municaoDeLeiteMax = 10000;
     [SerializeField] private Transform pivot;
+    [SerializeField] private float rotSpeed;
     public bool semLeite;
     private Transform esquerda, direita;
     public bool recarregarLeite;
@@ -43,6 +44,7 @@ public class WeaponController : MonoBehaviour
     private float aimWeight;
     [SerializeField] bool soundPlay;
     [SerializeField] bool jaTocou;
+    public LayerMask parede;
     
 
 
@@ -73,6 +75,8 @@ public class WeaponController : MonoBehaviour
 
 
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+        
         if (municaoDeLaraja <= 0)
         {
             semLaranja = true;
@@ -82,9 +86,9 @@ public class WeaponController : MonoBehaviour
             semLeite = true;
         }
         Vector3 aimPos = Vector3.zero;
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit,parede))
         {
-            Vector3 direction = hit.point - pivot.position;
+            Vector3 direction = (hit.point - pivot.position).normalized;
             pivot.forward = direction;
             pivot.transform.rotation = Quaternion.LookRotation(direction);
             SetWeaponDirection(direction);
@@ -229,6 +233,8 @@ public class WeaponController : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         // transform.rotation = Quaternion.Euler(0f, 0f, angle);
         pivot.rotation = Quaternion.Euler(0f, 0f, angle - 85);
+
+      
         // pivot.RotateAround(pivot.position,direction, angle-80);
         //  pivot.RotateAroundLocal(direction, angle);
         // pivot.eulerAngles =new Vector3(0f, 0f, angle);  
