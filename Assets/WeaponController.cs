@@ -9,8 +9,10 @@ public class WeaponController : MonoBehaviour
 {
     public List<Transform> firePoints;
 
-
+    [SerializeField] private float rotationSmoothSpeed = 5f;
     public Camera mainCamera;
+    private Vector3 lastDirection = Vector3.zero;
+    [SerializeField] private float directionTolerance = 0.01f;
     [SerializeField] private Rig aimRig;
     [SerializeField] public Transform Player;
     [SerializeField] public ParticleSystem leite;
@@ -45,6 +47,7 @@ public class WeaponController : MonoBehaviour
     [SerializeField] bool soundPlay;
     [SerializeField] bool jaTocou;
     public LayerMask parede;
+    public bool naoVira;
     
 
 
@@ -60,6 +63,7 @@ public class WeaponController : MonoBehaviour
         recarregandoAlaranja = false;
         municaoDeLeite = municaoDeLeiteMax;
         semLeite = false;
+        naoVira = false;
         recarregarLeite = false;
         aimWeight = 1.0f;
         soundPlay = false;
@@ -88,10 +92,13 @@ public class WeaponController : MonoBehaviour
         Vector3 aimPos = Vector3.zero;
         if (Physics.Raycast(ray, out RaycastHit hit,parede))
         {
+            Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.red);
             Vector3 direction = (hit.point - pivot.position).normalized;
-            pivot.forward = direction;
-            pivot.transform.rotation = Quaternion.LookRotation(direction);
-            SetWeaponDirection(direction);
+            Debug.Log(direction.normalized);
+            
+            //pivot.forward = direction;
+            //pivot.transform.rotation = Quaternion.LookRotation(direction).normalized;
+            SetWeaponDirection(direction.normalized);
         }
         ////aimRig.weight = Mathf.Lerp(aimRig.weight,aimWeight,Time.deltaTime*20);
 
@@ -230,11 +237,22 @@ public class WeaponController : MonoBehaviour
     //}
     void SetWeaponDirection(Vector3 direction)
     {
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(direction.normalized.y, direction.normalized.x) * Mathf.Rad2Deg;
         // transform.rotation = Quaternion.Euler(0f, 0f, angle);
-        pivot.rotation = Quaternion.Euler(0f, 0f, angle - 85);
+        posiçãoArmaAtual = angle;
 
-      
+        if (posiçãoArmaAtual > 60 && posiçãoArmaAtual < 120)
+        {
+            naoVira = true;
+        }
+        else
+        {
+            naoVira = false;
+            pivot.rotation = Quaternion.Euler(0f, 0f, angle - 85);
+        }
+        
+
+
         // pivot.RotateAround(pivot.position,direction, angle-80);
         //  pivot.RotateAroundLocal(direction, angle);
         // pivot.eulerAngles =new Vector3(0f, 0f, angle);  
@@ -269,7 +287,7 @@ public class WeaponController : MonoBehaviour
         //    viraDoDireita = true;
         //    viraDoEsquerda = false;
         //}
-        posiçãoArmaAtual = angle;
+        
 
 
 

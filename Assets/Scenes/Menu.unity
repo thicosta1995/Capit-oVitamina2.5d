@@ -939,6 +939,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nomeDoLevelDoJogo: Jogo
+  ImagemLogo: {fileID: 1329844071}
+  ImagemMenu: {fileID: 754414906}
   fase1: Fase1
   PainelMenuPrincipal: {fileID: 1580496110}
   painelOpcoes: {fileID: 1846989953}
@@ -1282,7 +1284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -463}
+  m_AnchoredPosition: {x: 962, y: -562}
   m_SizeDelta: {x: 564.525, y: 183.531}
   m_Pivot: {x: 0.5000001, y: 0.61519235}
 --- !u!114 &311590697
@@ -4160,8 +4162,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879578296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.7647724, y: 3.7647724, z: 3.7647724}
+  m_LocalPosition: {x: 0, y: 0, z: 170}
+  m_LocalScale: {x: 1.4185097, y: 1.4185097, z: 1.4185097}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1740277264}
@@ -4169,7 +4171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000071493, y: 0}
+  m_AnchoredPosition: {x: -0.000038709, y: 522}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &879578298
@@ -4226,9 +4228,12 @@ MonoBehaviour:
     Residencial Building"(https://skfb.ly/oq7xz)by macolen is licensed under Creative
     Commons Attribution(https://creativecommons.org/licenses/by/4.0/)
 
-    "New
-    York City Brownstone Building v1"(https://free3d.com/3d-model/new-york-city-brownstone-building-v1--277076.html)by
+    "New York
+    City Brownstone Building v1"(https://free3d.com/3d-model/new-york-city-brownstone-building-v1--277076.html)by
     printable_models licensed under Creative Commons Attribution(https://creativecommons.org/licenses/by/4.0/)
+
+    UI
+    Menu" by Norton Soares is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
 '
   m_isRightToLeft: 0
@@ -4257,7 +4262,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 23.4
   m_fontSizeBase: 8.9
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4293,7 +4298,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -151.94806, y: 0, z: -270.75116, w: 0}
+  m_margin: {x: -538.0247, y: 0, z: -754.92914, w: -811.3616}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4625,7 +4630,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000097819284, y: -211}
+  m_AnchoredPosition: {x: -18, y: 661}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1008008424
@@ -4675,7 +4680,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 18.2
   m_fontSizeBase: 38.86
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4711,7 +4716,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -271.66873, y: 0, z: 17.849083, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7633,7 +7638,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1740277264
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8969,7 +8974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1966219982
 RectTransform:
   m_ObjectHideFlags: 0

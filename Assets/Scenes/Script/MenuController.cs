@@ -6,6 +6,7 @@ public class MenuController : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private string nomeDoLevelDoJogo;
+    [SerializeField] private GameObject ImagemLogo, ImagemMenu;
     [SerializeField] private string fase1;
     [SerializeField] private GameObject PainelMenuPrincipal;
     [SerializeField] private GameObject painelOpcoes;
@@ -30,6 +31,8 @@ public class MenuController : MonoBehaviour
         painelHistoria.SetActive(false);
         painelTutotial.SetActive(false);
         MenuGeral.SetActive(true);
+        ImagemLogo.SetActive(true);
+        ImagemMenu.SetActive(true);
 
     }
     public void Jogar()
@@ -50,6 +53,9 @@ public class MenuController : MonoBehaviour
         painelHistoria.SetActive(false);
         painelTutotial.SetActive(false);
         MenuGeral.SetActive(true);
+        ImagemLogo.SetActive(true);
+        ImagemMenu.SetActive(true);
+
     }
     public void OpçãoJogar()
     {
@@ -61,6 +67,9 @@ public class MenuController : MonoBehaviour
         painelHistoria.SetActive(false);
         painelTutotial.SetActive(false);
         MenuGeral.SetActive(true);
+        ImagemLogo.SetActive(true);
+        ImagemMenu.SetActive(true);
+
     }
     public void SelecionarFase()
     {
@@ -72,6 +81,9 @@ public class MenuController : MonoBehaviour
         painelHistoria.SetActive(false);
         painelTutotial.SetActive(false);
         MenuGeral.SetActive(true);
+        ImagemLogo.SetActive(true);
+        ImagemMenu.SetActive(true);
+
     }
     public void OpcoesFechar()
     {
@@ -87,6 +99,9 @@ public class MenuController : MonoBehaviour
         painelHistoria.SetActive(true );
         painelTutotial.SetActive(false );
         MenuGeral.SetActive(false);
+        ImagemLogo.SetActive(false);
+        ImagemMenu.SetActive(false);
+
     }
     public void OpçãoTutorial()
     {
@@ -98,6 +113,9 @@ public class MenuController : MonoBehaviour
         painelHistoria.SetActive(false);
         painelTutotial.SetActive(true);
         MenuGeral.SetActive(false);
+        ImagemLogo.SetActive(false);
+        ImagemMenu.SetActive(false);
+
 
     }
     public void Creditos()
@@ -110,6 +128,9 @@ public class MenuController : MonoBehaviour
         painelHistoria.SetActive(false);
         painelTutotial.SetActive(false);
         MenuGeral.SetActive(true);
+        ImagemLogo.SetActive(false);
+        ImagemMenu.SetActive(false);
+
     }
     public void Sair() 
     {
@@ -125,5 +146,8 @@ public class MenuController : MonoBehaviour
         painelSelecionarFase.SetActive(false);
         painelHistoria.SetActive(false);
         painelTutotial.SetActive(false);
+        ImagemLogo.SetActive(true);
+        ImagemMenu.SetActive(true);
+
     }
 }

@@ -9,7 +9,12 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     CharacterController controle;
+    private bool tomouDano;
+    [SerializeField] private float timeDanoMax;
+    private float timeDano;
+
     public float moveSpeed = 1f;
+    public float moveSpeedSalvo;
     public GameObject CameraCair;
     public float jumpForce = 5f;
     public Vector3 xVelocity;
@@ -56,6 +61,9 @@ public class PlayerMovement : MonoBehaviour
         control.enabled = true;
         audioSource = GetComponent<AudioSource>();
         audioSource.Stop();
+        armas[1].SetActive(true);
+        armas[0].SetActive(false);
+        tomouDano = false;
     }
     private void Start()
     {
@@ -71,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
         {
             virtualCamera = GetComponent<CinemachineVirtualCamera>();
         }
+        moveSpeedSalvo = moveSpeed;
     }
 
     private void Update()
@@ -114,8 +123,18 @@ public class PlayerMovement : MonoBehaviour
             }
             virarPlayerLeite();
             virarPlayerLaranja();
+              if(tomouDano == true)
+        {
+            timeDano += 1;
+            moveSpeed = moveSpeed -4;
+            if(timeDano >= timeDanoMax)
+            {
+                moveSpeed = moveSpeedSalvo;
+                tomouDano = false;
+            }
         }
-
+      
+        }
       
 
 
@@ -240,14 +259,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (armaAtual == 0)
         {
-            if (armaLeite.viraDoDireita == true)
+            if (armaLeite.viraDoDireita == true && armaLeite.naoVira == false)
             {
 
                 transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                //animator.SetBool("Direita",true);   
             }
-            if (armaLeite.viraDoEsquerda == true)
+            if (armaLeite.viraDoEsquerda == true && armaLeite.naoVira == false)
             {
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                //animator.SetBool("Direita", false);
             }
         }
 
@@ -256,14 +277,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (armaAtual == 1)
         {
-            if (armaLaranja.viraDoDireita == true)
+            if (armaLaranja.viraDoDireita == true&& armaLaranja.naoVira== false)
             {
 
                 transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                //animator.SetBool("DireitaL", true);
             }
-            if (armaLaranja.viraDoEsquerda == true)
+            if (armaLaranja.viraDoEsquerda == true && armaLaranja.naoVira == false)
             {
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                //animator.SetBool("DireitaL", false);
             }
         }
     }
@@ -309,6 +332,7 @@ public class PlayerMovement : MonoBehaviour
             Hp = Hp - 20;
             audioSource.clip = HurtSound;
             audioSource.Play();
+            tomouDano = true;
         }
         if (collision.gameObject.CompareTag("D"))
         {
@@ -345,6 +369,7 @@ public class PlayerMovement : MonoBehaviour
             Hp = Hp - 20;
             audioSource.clip = HurtSound;
             audioSource.Play();
+            tomouDano = true;
         }
         if (other.gameObject.CompareTag("agua"))
         {
