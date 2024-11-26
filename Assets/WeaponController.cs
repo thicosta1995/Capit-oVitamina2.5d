@@ -48,9 +48,10 @@ public class WeaponController : MonoBehaviour
     [SerializeField] bool jaTocou;
     public LayerMask parede;
     public bool naoVira;
-    
 
 
+
+   
 
 
     private void Start()

@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float timeDanoMax;
     private float timeDano;
 
+    public float knockbackForce = 5f; // Força do empurrão
+    public float invulnerabilityTime = 1f; // Tempo de invulnerabilidade
+    private bool isInvulnerable = false;
+    
     public float moveSpeed = 1f;
     public float moveSpeedSalvo;
     public GameObject CameraCair;
@@ -38,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public voltarNoSpawm voltarNospawm;
     public Text Hptx;
     public GameObject[] armas; // Um array de GameObjects representando suas diferentes armas.
-    public int armaAtual = 0; // O índice da arma atual.
+    public int armaAtual = 1; // O índice da arma atual.
     ParticleSystem leite;
     public float stopDuration = 4f; // Duração em segundos para parar o foco
     [SerializeField] private Animator animator;
@@ -51,8 +55,9 @@ public class PlayerMovement : MonoBehaviour
     public CinemachineVirtualCamera virtualCamera;
     private void Awake()
     {
+        armas[1].SetActive(true);
+        armas[0].SetActive(false);
 
-      
 
         rb = GetComponent<Rigidbody>();
         Hp = 100;
@@ -61,15 +66,13 @@ public class PlayerMovement : MonoBehaviour
         control.enabled = true;
         audioSource = GetComponent<AudioSource>();
         audioSource.Stop();
-        armas[1].SetActive(true);
-        armas[0].SetActive(false);
+       
         tomouDano = false;
     }
     private void Start()
     {
 
-        animator.SetBool("leite", true);
-        animator.SetBool("LaranjaAtivo", false);
+        
         
         AtualizarArma();
         jaCaiu = false;
@@ -314,7 +317,20 @@ public class PlayerMovement : MonoBehaviour
     //    }
     //    return false;
     //}
+    void TakeDamage(Collider collision)
+    {
+        // Ativar invulnerabilidade
+       
 
+        // Calcular direção do empurrão
+        Vector3 knockbackDirection = (transform.position - collision.transform.position).normalized;
+
+        // Aplicar força de empurrão
+        rb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+
+        // Reduzir vida do jogador aqui, se necessário
+        Debug.Log("Personagem tomou dano!");
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
@@ -333,6 +349,9 @@ public class PlayerMovement : MonoBehaviour
             audioSource.clip = HurtSound;
             audioSource.Play();
             tomouDano = true;
+
+           
+
         }
         if (collision.gameObject.CompareTag("D"))
         {
@@ -376,6 +395,16 @@ public class PlayerMovement : MonoBehaviour
 
             Hp = Hp - 10;
             audioSource.clip = HurtSound;
+        }
+        if (other.gameObject.CompareTag("inimigo"))
+        {
+            Hp = Hp - 20;
+            audioSource.clip = HurtSound;
+            audioSource.Play();
+            tomouDano = true;
+     
+
+
         }
 
     }

@@ -1,0 +1,306 @@
+fileFormatVersion: 2
+guid: 6c2bf6771d483a144a2ac1f3ce8773cd
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bergere
+    second: {fileID: 2100000, guid: 17ed736a598bf094195da5d4d1951785, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book 1
+    second: {fileID: 2100000, guid: bf02f7c22c19bda4ba310d982a17b27b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book 2
+    second: {fileID: 2100000, guid: 1211898f0f4cac34b936e29efb8a573e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book 3
+    second: {fileID: 2100000, guid: 263d0071d0e3da64da74a102390f4f62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book 4
+    second: {fileID: 2100000, guid: a94c5bb17ea4f11478d95ba3687d606a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book 5
+    second: {fileID: 2100000, guid: fd22175c886318e4ca046ee5be9f8190, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book 6
+    second: {fileID: 2100000, guid: 537dd79543f2e164398ecbeb198000d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bookcase
+    second: {fileID: 2100000, guid: 410774433a30f294bbd55e6256c67917, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Candlestick
+    second: {fileID: 2100000, guid: c09029e996c649d449a18b427ebb1cec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Candlestick.001
+    second: {fileID: 2100000, guid: c00fc6bb1ec7f4a43bdce47d9848b682, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chair
+    second: {fileID: 2100000, guid: 0ea8c23ebfb66d04da255f6a47beb6e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Clock_Box
+    second: {fileID: 2100000, guid: 674d0762ae4e22c4d934bc7adb482545, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DefaultMaterial
+    second: {fileID: 2100000, guid: cdbac1a9919ed6c47b352ef606e5b194, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fireplace
+    second: {fileID: 2100000, guid: cc133d91895188d4ba04f3ee736754fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flowerpot
+    second: {fileID: 2100000, guid: 7515adc3d76c1474680a3205a7e62e55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flowerpot 1 Leaves
+    second: {fileID: 2100000, guid: 2b801a37ce1837e43a5c943966bfa87e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flowerpot 2 Rose 1
+    second: {fileID: 2100000, guid: 65fbe4ee545f75040a104afc9b935628, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flowerpot 2 Rose 2
+    second: {fileID: 2100000, guid: de901d964f2f78148a6507690d2ef488, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flowerpot 3 Flower
+    second: {fileID: 2100000, guid: 75d9c27343e761d4980fb989e857f2fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ink
+    second: {fileID: 2100000, guid: 40bcc26524f8d1046b138f71d7edf994, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ink Glass
+    second: {fileID: 2100000, guid: 22c293c22c34b2446b5d54cfd18b99ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat.026
+    second: {fileID: 2100000, guid: e7e36fba7078fd54abb1b28815a9e1bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat.027
+    second: {fileID: 2100000, guid: fe5c2f4f4dd246d4cad6f40875b261bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat.028
+    second: {fileID: 2100000, guid: 7197f579d574e2a4a9c9407f6a9ae1ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat.029
+    second: {fileID: 2100000, guid: fe8ce2b0861d85549ad8fb069c70b42c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat.030
+    second: {fileID: 2100000, guid: c71f6c98460fc194298ee7d3db1ac1a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat.031
+    second: {fileID: 2100000, guid: ac911bcf8f43705419d9a8f06d4c627b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mini_Table
+    second: {fileID: 2100000, guid: f65b89b886b39e64796c996792dc4e67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OldPaper
+    second: {fileID: 2100000, guid: 109108745d6325642a30095b26dc6590, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ottoman
+    second: {fileID: 2100000, guid: 426b8a5b5be991b449b23af73a0212eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pen
+    second: {fileID: 2100000, guid: 1383fa86cbe19df48a0ef0d69fb70c73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pen End
+    second: {fileID: 2100000, guid: 3184bee9b781c0e4fa17a16761ed52d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Picture
+    second: {fileID: 2100000, guid: 334dc2cfad6fd1945a8021f688d32af6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RUG
+    second: {fileID: 2100000, guid: 7f303098290d36a4b91c9d6435087a74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Room
+    second: {fileID: 2100000, guid: d5e76e1605301a54e9a7be0a4b82c396, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Street Lamp
+    second: {fileID: 2100000, guid: a780f49ec865eda4d9bb6b54eeed012c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Street Lamp.001
+    second: {fileID: 2100000, guid: 01a6dcc6847cd424d8b42e67b7bafae4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Table
+    second: {fileID: 2100000, guid: d352c99afbe478e4fb21cf977926c1ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window
+    second: {fileID: 2100000, guid: 043759d84259eb343846429bc86e6787, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tex_u1_v1
+    second: {fileID: 2100000, guid: a017f63311b9c1444af4e22f5b68abd8, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
