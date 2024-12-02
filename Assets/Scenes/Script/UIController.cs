@@ -8,18 +8,18 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private PlayerMovement player;
     [SerializeField] public Image fillbar, armaBarLeite, armaBarLaranja;
-    [SerializeField] private Slider slider,sliderMusic,sliderSound;
+    [SerializeField] private Slider slider, sliderMusic, sliderSound;
     [SerializeField] private GameObject imagemMuniçãoLeite, imagemMuniçãoLaranja;
-    [SerializeField] private GameObject MenuPause,MenuFim,Ui,MenuOpções;
+    [SerializeField] private GameObject MenuPause, MenuFim, Ui, MenuOpções;
     [SerializeField] private RestaurantControler restaurantControler;
     [SerializeField] private WeaponController ArmaLeite;
     [SerializeField] private GameManeger gameManeger;
-    [SerializeField] private TextMeshProUGUI pontos,pontosFim;
+    [SerializeField] private TextMeshProUGUI pontos, pontosFim;
     [SerializeField] private WeaponController ArmaLaranja;
-    [SerializeField]private string scena, scena1;
+    [SerializeField] private string scena, scena1;
     [SerializeField] AudioMixer audioMixer;
     private bool isPause;
-    [SerializeField]private bool opçãoActive = false;
+    [SerializeField] private bool opçãoActive = false;
     const string MIXER_MUSIC = "MusicParam";
     const string MIXER_SFC = "SoundParam";
     // Start is called before the first frame update
@@ -34,7 +34,7 @@ public class UIController : MonoBehaviour
     }
     void Start()
     {
-     
+
 
     }
 
@@ -51,23 +51,23 @@ public class UIController : MonoBehaviour
                     Time.timeScale = 1f;
                     MenuPause.SetActive(false);
                     Ui.SetActive(true);
-                    
+
 
                 }
 
                 else
                 {
-                   
-                        isPause = true;
-                        Time.timeScale = 0f;
-                        MenuPause.SetActive(true);
-                        Ui.SetActive(false);
-                        MenuOpções.SetActive(false);
-                    
-                   
+
+                    isPause = true;
+                    Time.timeScale = 0f;
+                    MenuPause.SetActive(true);
+                    Ui.SetActive(false);
+                    MenuOpções.SetActive(false);
+
+
 
                 }
-               
+
 
             }
             if (opçãoActive == true)
@@ -79,45 +79,45 @@ public class UIController : MonoBehaviour
             }
 
         }
-        if(player.Hp<=0)
+        if (player.Hp <= 0)
         {
 
             Time.timeScale = 0f;
             MenuFim.SetActive(true);
             Ui.SetActive(false);
             MenuPause.SetActive(false);
-            
+
 
         }
         if (restaurantControler.RestaurantDestruido == true)
         {
-           
-                Time.timeScale = 0f;
-                Ui.SetActive(false);
-                MenuFim.SetActive(true);
-                MenuPause.SetActive(false);
+
+            Time.timeScale = 0f;
+            Ui.SetActive(false);
+            MenuFim.SetActive(true);
+            MenuPause.SetActive(false);
 
             pontosFim.text = gameManeger.pontuação.ToString() + "X";
             pontos.text = "";
 
         }
         fillbar.fillAmount = player.Hp / 100;
-        if(player.armaAtual==0)
+        if (player.armaAtual == 0)
         {
             imagemMuniçãoLeite.SetActive(true);
             imagemMuniçãoLaranja.SetActive(false);
             armaBarLeite.fillAmount = ArmaLeite.municaoDeLeite / 1000;
 
         }
-        else if(player.armaAtual==1) 
+        else if (player.armaAtual == 1)
         {
             imagemMuniçãoLeite.SetActive(false);
             imagemMuniçãoLaranja.SetActive(true);
             armaBarLaranja.fillAmount = ArmaLaranja.municaoDeLaraja / 300;
-           
+
         }
 
-        pontos.text = gameManeger.pontuação.ToString() +"X";
+        pontos.text = gameManeger.pontuação.ToString() + "X";
     }
     public void BottaoMenu()
     {
@@ -133,7 +133,7 @@ public class UIController : MonoBehaviour
     }
     public void Opções()
     {
-        opçãoActive = true; 
+        opçãoActive = true;
     }
     public void Voltar()
     {
@@ -141,6 +141,14 @@ public class UIController : MonoBehaviour
         MenuPause.SetActive(true);
         Ui.SetActive(false);
         MenuOpções.SetActive(false);
+    }
+    public void Continuar()
+    {
+        isPause = false;
+        Time.timeScale = 1f;
+        MenuPause.SetActive(false);
+        Ui.SetActive(true);
+
     }
     private void SetMusicValue(float value)
     {

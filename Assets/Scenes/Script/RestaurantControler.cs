@@ -8,11 +8,14 @@ public class RestaurantControler : MonoBehaviour
     [SerializeField]private int hpRestaurante,HpMax;
     public bool RestaurantDestruido = false;
     [SerializeField] BarraHpFlutuante barraHpFlutuante;
+    private GameManeger gameManeger;
     void Start()
     {
         barraHpFlutuante = GetComponentInChildren<BarraHpFlutuante>();
         hpRestaurante = HpMax;
         barraHpFlutuante.UpDateHealhBar(hpRestaurante, HpMax);
+        gameManeger = GetComponent<GameManeger>();
+        
     }
 
     // Update is called once per frame
@@ -43,6 +46,9 @@ public class RestaurantControler : MonoBehaviour
         if(hpRestaurante <= 0)
         {
             RestaurantDestruido =true;
+            gameManeger.fazeConcluida = true;
+
+            
         }
     }
 }
