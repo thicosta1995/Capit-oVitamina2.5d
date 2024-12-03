@@ -359,6 +359,28 @@ public class PlayerMovement : MonoBehaviour
             audioSource.clip = HurtSound;
             audioSource.Play();
         }
+        
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Hp = Hp - 5;
+            audioSource.clip = HurtSound;
+            audioSource.Play();
+
+            Debug.Log("tomouDanoDAPoça");
+
+            //if (other.gameObject.CompareTag("Buraco"))
+            //{
+            //    colliderPlayer.enabled = false;
+            //    control.enabled = false;
+
+            ////    CameraCair.active = false;
+            //    StopFocusTemporarily();
+            //    ResetForces();
+            //}
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -423,19 +445,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 armaLeite.recarregarLeite = true;
             }
-         
+
         }
-   
+        
+        
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                Hp = Hp - 0.1f;
+            }
+        
 
-        //if (other.gameObject.CompareTag("Buraco"))
-        //{
-        //    colliderPlayer.enabled = false;
-        //    control.enabled = false;
-
-        ////    CameraCair.active = false;
-        //    StopFocusTemporarily();
-        //    ResetForces();
-        //}
     }
-
 }

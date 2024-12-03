@@ -95,7 +95,7 @@ public class WeaponController : MonoBehaviour
         {
             Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.red);
             Vector3 direction = (hit.point - pivot.position).normalized;
-            Debug.Log(direction.normalized);
+          
             
             //pivot.forward = direction;
             //pivot.transform.rotation = Quaternion.LookRotation(direction).normalized;
