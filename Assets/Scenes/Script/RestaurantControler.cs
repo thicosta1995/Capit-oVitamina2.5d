@@ -8,13 +8,13 @@ public class RestaurantControler : MonoBehaviour
     [SerializeField]private int hpRestaurante,HpMax;
     public bool RestaurantDestruido = false;
     [SerializeField] BarraHpFlutuante barraHpFlutuante;
-    private GameManeger gameManeger;
+    [SerializeField]private GameManeger gameManeger;
     void Start()
     {
         barraHpFlutuante = GetComponentInChildren<BarraHpFlutuante>();
         hpRestaurante = HpMax;
         barraHpFlutuante.UpDateHealhBar(hpRestaurante, HpMax);
-        gameManeger = GetComponent<GameManeger>();
+        
         
     }
 

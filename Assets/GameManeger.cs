@@ -9,6 +9,7 @@ public class GameManeger : MonoBehaviour
     [SerializeField] private int numberEnemys;
     [SerializeField] public bool inimigoMorreu;
      public  bool fazeConcluida;
+    public MenuController menuController;
     [SerializeField]private int fazes;
     [SerializeField] private int registro;
 
@@ -22,6 +23,11 @@ public class GameManeger : MonoBehaviour
     {
         load();
         adicionarFasesConcluidas();
+        if(fazeConcluida == true)
+        {
+           
+            ControladorDeFaes.instace.fase1Concluida = true;
+        }
     }
    public  void  adicionarPontos()
     {
@@ -41,8 +47,5 @@ public class GameManeger : MonoBehaviour
         fazes = PlayerPrefs.GetInt("Fazes Concluidas",0);
 
     }
-    public void delet()
-    {
-        PlayerPrefs.DeleteAll();
-    }
+    
 }

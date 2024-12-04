@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     CharacterController controle;
-    private bool tomouDano;
+    [SerializeField]private bool tomouDano;
     [SerializeField] private float timeDanoMax;
     private float timeDano;
 
@@ -127,14 +127,14 @@ public class PlayerMovement : MonoBehaviour
             virarPlayerLeite();
             virarPlayerLaranja();
               if(tomouDano == true)
-        {
-            timeDano += 1;
-            moveSpeed = moveSpeed -4;
-            if(timeDano >= timeDanoMax)
-            {
-                moveSpeed = moveSpeedSalvo;
-                tomouDano = false;
-            }
+              {
+                  timeDano += Time.deltaTime;
+                  moveSpeed = 1;
+              if(timeDano >= timeDanoMax)
+              {
+                  moveSpeed = moveSpeedSalvo;
+                  tomouDano = false;
+              }
         }
       
         }
@@ -339,17 +339,23 @@ public class PlayerMovement : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("inimigoArC"))
         {
-            Hp = Hp - 20;
-            audioSource.clip = HurtSound;
-            audioSource.Play();
+            if (tomouDano == false)
+            {
+                Hp = Hp - 20;
+                audioSource.clip = HurtSound;
+                audioSource.Play();
+                tomouDano = true;
+            }
         }
         if (collision.gameObject.CompareTag("inimigoArB"))
         {
-            Hp = Hp - 20;
-            audioSource.clip = HurtSound;
-            audioSource.Play();
-            tomouDano = true;
-
+            if (tomouDano == false)
+            {
+                Hp = Hp - 20;
+                audioSource.clip = HurtSound;
+                audioSource.Play();
+                tomouDano = true;
+            }
            
 
         }
@@ -401,16 +407,23 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.gameObject.CompareTag("inimigoArC"))
         {
-            Hp = Hp - 20;
-            audioSource.clip = HurtSound;
-            audioSource.Play();
+            if (tomouDano == false)
+            {
+                Hp = Hp - 20;
+                audioSource.clip = HurtSound;
+                audioSource.Play();
+                tomouDano = true;
+            }
         }
         if (other.gameObject.CompareTag("inimigoArB"))
         {
-            Hp = Hp - 20;
-            audioSource.clip = HurtSound;
-            audioSource.Play();
-            tomouDano = true;
+            if (tomouDano == false)
+            {
+                Hp = Hp - 20;
+                audioSource.clip = HurtSound;
+                audioSource.Play();
+                tomouDano = true;
+            }
         }
         if (other.gameObject.CompareTag("agua"))
         {

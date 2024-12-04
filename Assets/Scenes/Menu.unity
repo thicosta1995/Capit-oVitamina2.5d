@@ -381,7 +381,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &78794118
@@ -942,6 +942,7 @@ MonoBehaviour:
   ImagemLogo: {fileID: 1329844071}
   ImagemMenu: {fileID: 754414906}
   fase1: Fase1
+  fase2: Fase2
   PainelMenuPrincipal: {fileID: 1580496110}
   painelOpcoes: {fileID: 1846989953}
   painelCreditos: {fileID: 1740277263}
@@ -950,9 +951,12 @@ MonoBehaviour:
   painelHistoria: {fileID: 1747727001}
   painelTutotial: {fileID: 1966219981}
   MenuGeral: {fileID: 556781086}
+  "bot\xE3oFase2B": {fileID: 1495756367}
+  "bot\xE3oFase2": {fileID: 2013841757}
   terminouFase1: 0
   terminouFase2: 0
   terminouFase3: 0
+  fazeconcluida: 0
 --- !u!114 &228497913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2269,7 +2273,7 @@ GameObject:
   - component: {fileID: 645659451}
   - component: {fileID: 645659450}
   m_Layer: 5
-  m_Name: "Bot\xE3o Creditos"
+  m_Name: "Bot\xE3o fase 2"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4385,6 +4389,51 @@ RectTransform:
   m_AnchoredPosition: {x: -59.99996, y: 0}
   m_SizeDelta: {x: 1820, y: 979.51807}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &955019324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 955019326}
+  - component: {fileID: 955019325}
+  m_Layer: 0
+  m_Name: ControladorDefazes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &955019325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955019324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6420f38181ce7164db7fa5fe5e6e24e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fase1Concluida: 0
+--- !u!4 &955019326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955019324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 114.93623, y: -14.427088, z: -222.49997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &957904633
 GameObject:
   m_ObjectHideFlags: 0
@@ -6853,7 +6902,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1489587881
@@ -6892,16 +6941,16 @@ RectTransform:
   m_GameObject: {fileID: 1495756367}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.90101993, y: 0.90101993, z: 0.90101993}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 381279818}
-  m_Father: {fileID: 2013841758}
+  m_Father: {fileID: 2104087575}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000026481277, y: 21.141464}
+  m_AnchoredPosition: {x: 0.00014162801, y: -159.41219}
   m_SizeDelta: {x: 564.525, y: 183.531}
   m_Pivot: {x: 0.5000001, y: 0.61519235}
 --- !u!114 &1495756369
@@ -8396,7 +8445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1875319140
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9558,7 +9607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2013841758
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9572,9 +9621,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1489587879}
-  - {fileID: 1495756368}
   m_Father: {fileID: 2104087575}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9627,7 +9675,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 228497912}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Fase2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9918,6 +9966,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 78794116}
+  - {fileID: 1495756368}
   - {fileID: 2013841758}
   m_Father: {fileID: 1875319140}
   m_RootOrder: 0
