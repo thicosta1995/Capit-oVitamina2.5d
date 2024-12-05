@@ -32,7 +32,7 @@ public class WeaponController : MonoBehaviour
     public float intervaloTiros = 0.1f;
     public GameObject explosiveProjectilePrefab;
     [SerializeField] public float municaoDeLaraja;
-    [SerializeField] private float municaoDeLarajaMax = 300;
+    [SerializeField] private float municaoDeLarajaMax;
     public bool recarregandoAlaranja;
     public bool semLaranja;
     private bool isFiring; // Indica se a arma está atirando
@@ -242,10 +242,12 @@ public class WeaponController : MonoBehaviour
         // transform.rotation = Quaternion.Euler(0f, 0f, angle);
         posiçãoArmaAtual = angle;
 
-        if (posiçãoArmaAtual > 60 && posiçãoArmaAtual < 120)
+        Debug.Log("posição da arma"+posiçãoArmaAtual);
+        if (posiçãoArmaAtual > 60 && posiçãoArmaAtual < 120 || posiçãoArmaAtual < -60 && posiçãoArmaAtual > -130)
         {
             naoVira = true;
         }
+      
         else
         {
             naoVira = false;

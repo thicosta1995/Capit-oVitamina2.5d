@@ -113,7 +113,7 @@ public class UIController : MonoBehaviour
         {
             imagemMuniçãoLeite.SetActive(false);
             imagemMuniçãoLaranja.SetActive(true);
-            armaBarLaranja.fillAmount = ArmaLaranja.municaoDeLaraja / 300;
+            armaBarLaranja.fillAmount = ArmaLaranja.municaoDeLaraja / 1000;
 
         }
 
